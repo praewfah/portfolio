@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html, body { height: 100%; }
+body { @apply bg-base text-white; }
+@layer components {
+  .btn { @apply relative overflow-hidden inline-flex items-center gap-2 rounded-xl px-5 py-2 border border-cyan-400/40 hover:border-cyan-300/60 transition; }
+  .btn::after { content:""; @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent; }
+  .btn:hover::after { @apply translate-x-0; animation: shine 1s linear; }
+  .btn-primary { @apply bg-cyan-400/20 text-cyan-200 hover:bg-cyan-400/30; }
+  .card { @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 shadow-[0_0_30px_rgba(0,255,255,0.08)]; }
+  .headline { @apply text-4xl md:text-6xl font-bold; }
+  .subtle { @apply text-white/70; }
+  .container-px { @apply px-4 md:px-8; }
+  .h-vh { height: 90vh; }
+}
