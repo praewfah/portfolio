@@ -1,16 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-html, body { height: 100%; }
-body { @apply bg-base text-white; }
+html, body { height: 100%; scroll-behavior: smooth; }
+body { @apply text-ink bg-white; font-family: ui-sans-serif, system-ui, -apple-system, 'Inter', 'Noto Sans Thai', sans-serif; }
 @layer components {
-  .btn { @apply relative overflow-hidden inline-flex items-center gap-2 rounded-xl px-5 py-2 border border-cyan-400/40 hover:border-cyan-300/60 transition; }
-  .btn::after { content:""; @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent; }
-  .btn:hover::after { @apply translate-x-0; animation: shine 1s linear; }
-  .btn-primary { @apply bg-cyan-400/20 text-cyan-200 hover:bg-cyan-400/30; }
-  .card { @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 shadow-[0_0_30px_rgba(0,255,255,0.08)]; }
-  .headline { @apply text-4xl md:text-6xl font-bold; }
-  .subtle { @apply text-white/70; }
-  .container-px { @apply px-4 md:px-8; }
-  .h-vh { height: 90vh; }
+  .container { @apply max-w-[1060px] mx-auto px-6; }
+  .menu-btn { @apply px-5 py-2 border border-gray-300 rounded-md text-sm hover:bg-gray-100 transition; }
+  .h1-hero { @apply text-5xl md:text-7xl font-semibold tracking-wide text-white; text-shadow: 0 2px 10px rgba(0,0,0,.25); }
+  .h-section { @apply text-2xl md:text-3xl tracking-widest text-gray-700; letter-spacing: .25em; }
+  .subtle { @apply text-gray-500; }
+  .divider { @apply h-px bg-gray-300; }
+}
+/* Navigation Hover Glow */
+nav a:hover {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.55);
 }

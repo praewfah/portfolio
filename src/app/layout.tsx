@@ -1,25 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import PageTransition from "@/components/PageTransition";
-import { AuroraBackground } from "@/components/AuroraBackground";
+import Nav from "../components/Nav";
+import PageTransition from "../components/PageTransition";
 
-export const metadata: Metadata = {
-  title: "Praew | Futuristic Portfolio",
-  description: "AI/Futuristic gradient portfolio",
-};
+export const metadata: Metadata = { title: "Aumaporn T. | Portfolio", description: "Paged portfolio" };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }:{ children: React.ReactNode }){
   return (
     <html lang="en">
       <body>
-        <AuroraBackground />
-        <Navbar />
-        <main className="container-px mx-auto">
-          <PageTransition>{children}</PageTransition>
-        </main>
-        <Footer />
+        <Nav />
+        <main className="min-h-[80vh]"><PageTransition>{children}</PageTransition></main>
       </body>
     </html>
   );
