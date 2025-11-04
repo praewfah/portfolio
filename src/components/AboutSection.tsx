@@ -1,8 +1,12 @@
 'use client';
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useLanguage } from "../contexts/LanguageContext";
+import { translations } from "../lib/translations";
 
 export default function AboutSection() {
+  const { language } = useLanguage();
+  const t = translations[language];
   return (
     <section id="about" className="relative">
       <div className="relative h-[600px] md:h-[700px] w-full">
@@ -33,7 +37,7 @@ export default function AboutSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Bachelor of Science in Computer Science
+              {t.about.subtitle}
             </motion.p>
             <motion.p 
               className="text-gray-300 italic text-sm mt-6 animate-fadeup" 
@@ -42,9 +46,9 @@ export default function AboutSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Full Stack Developer with <strong>over 10 years of experience</strong> in designing and implementing scalable web applications across frontend and backend environments. Specialized in Python, React, Next.js, PHP, and MySQL, with strong hands-on experience in Dockerized CI/CD environments, RESTful APIs, and cross-system integrations.
+              {t.about.description1}
               <br /><br />
-              Currently leading the development of multi-tenant gaming platforms, handling complex wallet systems, transaction concurrency, and real-time APIs for high-volume international users. Passionate about building efficient, maintainable systems and collaborating in diverse, international teams to deliver impactful digital solutions.
+              {t.about.description2}
             </motion.p>
           </div>
         </div>

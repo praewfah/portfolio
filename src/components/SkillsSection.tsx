@@ -1,5 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
+import { useLanguage } from "../contexts/LanguageContext";
+import { translations } from "../lib/translations";
 
 const fade = {
   hidden: { opacity: 0, y: 8 },
@@ -18,11 +20,15 @@ function CardTitle({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Group({ title, children }: { title: string; children: React.ReactNode }) {
+function Group({ title, items }: { title: string; items: readonly string[] | string[] }) {
   return (
     <div className="mb-6">
       <div className="font-semibold text-gray-800 mb-2">{title}</div>
-      <div className="flex flex-wrap gap-2">{children}</div>
+      <div className="flex flex-wrap gap-2">
+        {items.map((item) => (
+          <Tag key={item} label={item} />
+        ))}
+      </div>
     </div>
   );
 }
@@ -42,6 +48,9 @@ function Tag({ label }: { label: string }) {
 }
 
 export default function SkillsSection() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section id="skills" className="pt-12 pb-20">
       <div className="container">
@@ -56,34 +65,15 @@ export default function SkillsSection() {
             viewport={{ once: true, amount: 0.2 }}
             className="rounded-2xl bg-white/60 shadow-sm ring-1 ring-gray-200 p-6"
           >
-            <CardTitle>TECHNICAL SKILLS</CardTitle>
+            <CardTitle>{t.skills.title}</CardTitle>
 
-            <Group title="Frontend Development">
-              {[
-                "React", "Next.js", "Vue.js", "TypeScript", "JavaScript (ES6+)",
-                "HTML5", "CSS3", "SCSS", "Tailwind", "Bootstrap", "AJAX"
-              ].map((t) => <Tag key={t} label={t} />)}
-            </Group>
+            <Group title={t.skills.frontend} items={t.skills.skills.frontend} />
 
-            <Group title="Backend Development">
-              {[
-                "PHP 8+", "Laravel", "Symfony Components", "Node.js", "Python (FastAPI)",
-                "MySQL", "PostgreSQL", "Redis"
-              ].map((t) => <Tag key={t} label={t} />)}
-            </Group>
+            <Group title={t.skills.backend} items={t.skills.skills.backend} />
 
-            <Group title="API & Integration">
-              {[
-                "RESTful APIs", "SOAP", "XML/XSD", "JSON", "OAuth2/JWT"
-              ].map((t) => <Tag key={t} label={t} />)}
-            </Group>
+            <Group title={t.skills.api} items={t.skills.skills.api} />
 
-            <Group title="DevOps & Tools">
-              {[
-                "Docker", "Git", "GitHub Actions", "Jenkins", "Linux (Ubuntu/CentOS)",
-                "Apache", "Nginx", "Composer", "Yarn/NPM"
-              ].map((t) => <Tag key={t} label={t} />)}
-            </Group>
+            <Group title={t.skills.devops} items={t.skills.skills.devops} />
           </motion.div>
 
           {/* RIGHT: Specializations */}
@@ -95,18 +85,16 @@ export default function SkillsSection() {
             viewport={{ once: true, amount: 0.2 }}
             className="rounded-2xl bg-white/60 shadow-sm ring-1 ring-gray-200 p-6"
           >
-            <CardTitle>SPECIALIZATIONS</CardTitle>
+            <CardTitle>{t.skills.specialization}</CardTitle>
 
-            <Group title="Other Skills">
-              {[
-                "Agile Scrum", "Unit Testing (PHPUnit, Jest)", "Code Review",
-                "Documentation", "Cross-Team Collaboration"
-              ].map((t) => <Tag key={t} label={t} />)}
-            </Group>
+            <Group title={t.skills.other} items={t.skills.skills.other} />
 
-            <Group title="Languages">
-              {["Thai (Native)", "English (Fluent)"].map((t) => <Tag key={t} label={t} />)}
-            </Group>
+            <div className="mb-6">
+              <div className="font-semibold text-gray-800 mb-2">{t.skills.languages}</div>
+              <div className="flex flex-wrap gap-2">
+                <Tag label={t.skills.languagesValue} />
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

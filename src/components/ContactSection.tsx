@@ -1,26 +1,30 @@
 'use client';
+import { useLanguage } from "../contexts/LanguageContext";
+import { translations } from "../lib/translations";
 
 export default function ContactSection() {
+  const { language } = useLanguage();
+  const t = translations[language];
   return (
     <section id="contact" className="pt-12 pb-24">
       <div className="container">
-        <h2 className="h-section text-gray-400">GET IN TOUCH</h2>
+        <h2 className="h-section text-gray-400">{t.contact.title}</h2>
         <div className="grid md:grid-cols-4 gap-10 mt-24 text-sm">
           <div>
-            <div className="italic font-semibold">Mailing Address</div>
-            <div className="subtle mt-2">2359/187 Sukhumvit 77 Road, Bangna-Trad, Bangkok 10250</div>
+            <div className="italic font-semibold">{t.contact.mailingAddress}</div>
+            <div className="subtle mt-2">{t.contact.mailingAddressValue}</div>
           </div>
           <div>
-            <div className="italic font-semibold">Email Address</div>
-            <div className="subtle mt-2">praew.auma@gmail.com</div>
+            <div className="italic font-semibold">{t.contact.emailAddress}</div>
+            <div className="subtle mt-2">{t.contact.emailAddressValue}</div>
           </div>
           <div>
-            <div className="italic font-semibold">Phone Number</div>
-            <div className="subtle mt-2">+66 84 659 5073</div>
+            <div className="italic font-semibold">{t.contact.phoneNumber}</div>
+            <div className="subtle mt-2">{t.contact.phoneNumberValue}</div>
           </div>
           <div>
-            <div className="italic font-semibold">LinkedIn</div>
-            <div className="subtle mt-2">linkedin.com/in/aumaporn-tangmanosodsikul-1771431a4</div>
+            <div className="italic font-semibold">{t.contact.linkedin}</div>
+            <div className="subtle mt-2">{t.contact.linkedinValue}</div>
           </div>
         </div>
       </div>
