@@ -10,7 +10,7 @@ export const translations = {
     },
     about: {
       subtitle: 'Bachelor of Science in Computer Science',
-      description1: 'Full Stack Developer with over 10 years of experience in designing and implementing scalable web applications across frontend and backend environments. Specialized in Python, React, Next.js, PHP, and MySQL, with strong hands-on experience in Dockerized CI/CD environments, RESTful APIs, and cross-system integrations.',
+      description1: 'Full Stack Developer with over 10 years of experience in designing and implementing scalable web applications across frontend and backend environments. Specialized in Python, React, Next.js, PHP, and MySQL/PostgreSQL/SQLite, with strong hands-on experience in Dockerized CI/CD environments, RESTful APIs, and cross-system integrations.',
       description2: 'Currently leading the development of multi-tenant gaming platforms, handling complex wallet systems, transaction concurrency, and real-time APIs for high-volume international users. Passionate about building efficient, maintainable systems and collaborating in diverse, international teams to deliver impactful digital solutions.',
     },
     experience: {
@@ -138,7 +138,8 @@ export const translations = {
     education: {
       title: 'EDUCATION',
       degree: 'Bachelor of Science in Computer Science',
-      description: 'Specialized in software development, algorithms, and system design',
+      description: 'The University of the Thai Chamber of Commerce ( 2006 - 2009 )',
+      description2: 'First class honors',
     },
     contact: {
       title: 'GET IN TOUCH',
@@ -163,14 +164,14 @@ export const translations = {
     },
     about: {
       subtitle: 'ปริญญาตรีวิทยาศาสตร์ สาขาวิทยาการคอมพิวเตอร์',
-      description1: 'นักพัฒนา Full Stack พร้อมประสบการณ์กว่า 10 ปีในการออกแบบและสร้างเว็บแอปพลิเคชันที่ปรับขยายได้ทั้งด้านหน้าบ้านและหลังบ้าน เชี่ยวชาญใน Python, React, Next.js, PHP และ MySQL พร้อมประสบการณ์จริงในการใช้ Dockerized CI/CD, RESTful APIs และการบูรณาการข้ามระบบ',
+      description1: 'นักพัฒนา Full Stack พร้อมประสบการณ์กว่า 10 ปีในการออกแบบและสร้างเว็บแอปพลิเคชันที่ปรับขยายได้ทั้งด้านหน้าบ้านและหลังบ้าน เชี่ยวชาญใน Python, React, Next.js, PHP และ MySQL/PostgreSQL/SQLite พร้อมประสบการณ์จริงในการใช้ Dockerized CI/CD, RESTful APIs และการบูรณาการข้ามระบบ',
       description2: 'ปัจจุบันนำการพัฒนาระบบเกม multi-tenant จัดการระบบกระเป๋าเงินที่ซับซ้อน การทำธุรกรรมพร้อมกัน และ API แบบเรียลไทม์สำหรับผู้ใช้ระดับนานาชาติที่มีปริมาณสูง มีความสนใจในการสร้างระบบที่มีประสิทธิภาพและบำรุงรักษาได้ รวมถึงการทำงานร่วมกับทีมที่มีความหลากหลายเพื่อส่งมอบโซลูชันดิจิทัลที่มีผลกระทบ',
     },
     experience: {
       title: 'ประสบการณ์',
       bluepi: {
-        company: 'บริษัท บลูพี จำกัด',
-        role: 'วิศวกรหลังบ้านระดับ Senior',
+        company: 'บริษัท บลูพาย จำกัด',
+        role: 'Senior Back-end Engineer',
         date: 'เมษายน 2021 - ปัจจุบัน',
         bullets: [
           'พัฒนาและดูแลระบบเกมแบบหลายแอปพลิเคชันด้วย Next.js (React) และ FastAPI/PHP',
@@ -182,7 +183,7 @@ export const translations = {
       },
       unixdev: {
         company: 'บริษัท ยูนิกซ์เดฟ จำกัด',
-        role: 'นักพัฒนา PHP ระดับ Senior',
+        role: 'Senior PHP Developer',
         date: 'กรกฎาคม 2020 - เมษายน 2021',
         bullets: [
           'สร้างแพลตฟอร์มการศึกษาแบบดิจิทัลด้วย PHP Laravel, Vue.js และ MySQL',
@@ -194,7 +195,7 @@ export const translations = {
       },
       common: {
         company: 'บริษัท คอมมอน-เซอร์วิส จำกัด',
-        role: 'นักพัฒนา ระดับ Senior',
+        role: 'Senior Developer',
         date: 'ธันวาคม 2013 - กุมภาพันธ์ 2020',
         bullets: [
           'พัฒนา backend สำหรับระบบข้อมูลอีคอมเมิร์ซขนาดใหญ่',
@@ -207,7 +208,7 @@ export const translations = {
       },
       diversition: {
         company: 'บริษัท ไดเวอร์ซิชั่น จำกัด',
-        role: 'นักพัฒนา PHP',
+        role: 'PHP Developer',
         date: '2011 - พฤศจิกายน 2013',
         bullets: [
           'พัฒนาระบบธุรกิจภายในด้วย OOP PHP',
@@ -217,8 +218,8 @@ export const translations = {
         ],
       },
       positionfp: {
-        company: 'บริษัท โพซิชัน เฟรนท์ เพจ จำกัด',
-        role: 'โปรแกรมเมอร์',
+        company: 'บริษัท โพซิชัน ฟรอนท์ เพจ จำกัด',
+        role: 'Programmer',
         date: '2010',
         bullets: [
           'พัฒนาและดูแลหน้าเว็บแบบไดนามิกด้วย PHP 5, HTML, CSS และ JavaScript',
@@ -291,7 +292,8 @@ export const translations = {
     education: {
       title: 'การศึกษา',
       degree: 'ปริญญาตรีวิทยาศาสตร์ สาขาวิทยาการคอมพิวเตอร์',
-      description: 'เฉพาะทางในการพัฒนาแอปพลิเคชัน อัลกอริทึม และการออกแบบระบบ',
+      description: 'มหาวิทยาลัยหอการค้าไทย ( 2006 - 2009 )',
+      description2: 'เกียรตินิยมอันดับ 1',
     },
     contact: {
       title: 'ติดต่อ',

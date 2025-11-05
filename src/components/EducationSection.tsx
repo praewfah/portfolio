@@ -18,6 +18,7 @@ export default function EducationSection() {
           <div className="absolute right-6 top-1/3 max-w-xs text-white/90">
             <div className="font-semibold">{t.education.degree}</div>
             <p className="text-sm leading-6">{t.education.description}</p>
+            <p className="text-sm leading-6">{t.education.description2}</p>
           </div>
         </div>
       </div>
