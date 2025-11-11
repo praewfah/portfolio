@@ -9,7 +9,7 @@ export default function ContactSection() {
     <section id="contact" className="pt-12 pb-24">
       <div className="container">
         <h2 className="h-section text-gray-400">{t.contact.title}</h2>
-        <div className="grid md:grid-cols-4 gap-10 mt-24 text-sm">
+        <div className="grid md:grid-cols-5 gap-10 mt-24 text-sm">
           <div>
             <div className="italic font-semibold">{t.contact.mailingAddress}</div>
             <div className="subtle mt-2">{t.contact.mailingAddressValue}</div>
@@ -25,6 +25,17 @@ export default function ContactSection() {
           <div>
             <div className="italic font-semibold">{t.contact.linkedin}</div>
             <div className="subtle mt-2">{t.contact.linkedinValue}</div>
+          </div>
+          <div>
+            <div className="italic font-semibold">{t.contact.github}</div>
+            <a
+              href={`https://${t.contact.githubValue}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="subtle mt-2 block text-blue-500 hover:text-blue-600 hover:underline"
+            >
+              {t.contact.githubValue}
+            </a>
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ export const translations = {
       experience: 'Experience',
       skills: 'Skills',
       education: 'Education',
+      portfolio: 'Portfolio',
       gallery: 'Gallery',
       contact: 'Contact',
     },
@@ -141,6 +142,48 @@ export const translations = {
       description: 'The University of the Thai Chamber of Commerce ( 2006 - 2009 )',
       description2: 'First class honors',
     },
+    portfolio: {
+      title: 'PORTFOLIO',
+      subtitle: 'Selected projects and experiments',
+      projects: [
+        {
+          name: 'bot-line',
+          description: 'LINE chatbot “เลขมงคล” that notifies operators when conversations need attention.',
+          tech: ['PHP', 'Heroku', 'LINE Messaging API'],
+          url: 'https://github.com/praewfah/bot-line',
+        },
+        {
+          name: 'card-match-api-node',
+          description: 'Card matching game API built with Node.js, Express, Prisma, and MariaDB.',
+          tech: ['Node.js', 'Express', 'Prisma', 'MariaDB'],
+          url: 'https://github.com/praewfah/card-match-api-node',
+        },
+        {
+          name: 'Map-Search-Application',
+          description: 'Responsive single-page map app that surfaces tweets mentioning the searched city.',
+          tech: ['PHP', 'JavaScript', 'Twitter API'],
+          url: 'https://github.com/praewfah/Map-Search-Application',
+        },
+        {
+          name: 'portfolio',
+          description: 'This personal portfolio built with Next.js, Tailwind CSS, and Framer Motion.',
+          tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+          url: 'https://github.com/praewfah/portfolio',
+        },
+        {
+          name: 'stock-management',
+          description: 'Inventory management tooling crafted with Laravel for internal operations.',
+          tech: ['Laravel', 'MySQL'],
+          url: 'https://github.com/praewfah/stock-management',
+        },
+        {
+          name: 'memory-game-card',
+          description: 'Classic memory card game implemented with PHP for practicing game mechanics.',
+          tech: ['PHP', 'JavaScript'],
+          url: 'https://github.com/praewfah/memory-game-card',
+        },
+      ],
+    },
     contact: {
       title: 'GET IN TOUCH',
       mailingAddress: 'Mailing Address',
@@ -151,6 +194,8 @@ export const translations = {
       phoneNumberValue: '+66 84 659 5073',
       linkedin: 'LinkedIn',
       linkedinValue: 'linkedin.com/in/aumaporn-tangmanosodsikul-1771431a4',
+      github: 'GitHub',
+      githubValue: 'github.com/praewfah',
     },
   },
   th: {
@@ -159,6 +204,7 @@ export const translations = {
       experience: 'ประสบการณ์',
       skills: 'ทักษะ',
       education: 'การศึกษา',
+      portfolio: 'ผลงาน',
       gallery: 'แกลเลอรี่',
       contact: 'ติดต่อ',
     },
@@ -295,6 +341,48 @@ export const translations = {
       description: 'มหาวิทยาลัยหอการค้าไทย ( 2006 - 2009 )',
       description2: 'เกียรตินิยมอันดับ 1',
     },
+    portfolio: {
+      title: 'ผลงาน',
+      subtitle: 'ตัวอย่างโปรเจ็กต์และงานทดลอง',
+      projects: [
+        {
+          name: 'bot-line',
+          description: 'แชทบอท LINE “เลขมงคล” แจ้งเตือนผู้ดูแลเมื่อบอทตอบไม่ได้ภายในเวลาที่กำหนด',
+          tech: ['PHP', 'Heroku', 'LINE Messaging API'],
+          url: 'https://github.com/praewfah/bot-line',
+        },
+        {
+          name: 'card-match-api-node',
+          description: 'API เกมจับคู่การ์ด พัฒนาโดยใช้ Node.js, Express, Prisma และ MariaDB',
+          tech: ['Node.js', 'Express', 'Prisma', 'MariaDB'],
+          url: 'https://github.com/praewfah/card-match-api-node',
+        },
+        {
+          name: 'Map-Search-Application',
+          description: 'เว็บแอปหน้าเดียวที่ค้นหาเมืองและแสดงทวีตที่กล่าวถึงเมืองนั้นบนแผนที่',
+          tech: ['PHP', 'JavaScript', 'Twitter API'],
+          url: 'https://github.com/praewfah/Map-Search-Application',
+        },
+        {
+          name: 'portfolio',
+          description: 'เว็บไซต์พอร์ตโฟลิโอส่วนตัวนี้ ใช้ Next.js, Tailwind CSS และ Framer Motion',
+          tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+          url: 'https://github.com/praewfah/portfolio',
+        },
+        {
+          name: 'stock-management',
+          description: 'ระบบจัดการสต็อกสินค้าด้วย Laravel สำหรับการใช้งานภายใน',
+          tech: ['Laravel', 'MySQL'],
+          url: 'https://github.com/praewfah/stock-management',
+        },
+        {
+          name: 'memory-game-card',
+          description: 'เกมจับคู่การ์ดแบบคลาสสิกที่พัฒนาด้วย PHP เพื่อฝึกงานด้านเกม',
+          tech: ['PHP', 'JavaScript'],
+          url: 'https://github.com/praewfah/memory-game-card',
+        },
+      ],
+    },
     contact: {
       title: 'ติดต่อ',
       mailingAddress: 'ที่อยู่',
@@ -305,6 +393,8 @@ export const translations = {
       phoneNumberValue: '+66 84 659 5073',
       linkedin: 'LinkedIn',
       linkedinValue: 'linkedin.com/in/aumaporn-tangmanosodsikul-1771431a4',
+      github: 'GitHub',
+      githubValue: 'github.com/praewfah',
     },
   },
 } as const;

@@ -14,6 +14,7 @@ export default function Navbar() {
     { id: "experience", label: t.nav.experience },
     { id: "skills", label: t.nav.skills },
     { id: "education", label: t.nav.education },
+    { id: "portfolio", label: t.nav.portfolio },
     { id: "gallery", label: t.nav.gallery },
     { id: "contact", label: t.nav.contact },
   ];
