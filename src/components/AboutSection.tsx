@@ -31,7 +31,7 @@ export default function AboutSection() {
               AUMAPORN T.
             </motion.h1>
             <motion.p 
-              className="text-white/90 text-lg mt-3 animate-fadeup" 
+              className="text-white text-lg mt-3 animate-fadeup" 
               style={{ animationDelay: '.2s' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ export default function AboutSection() {
               {t.about.subtitle}
             </motion.p>
             <motion.p 
-              className="text-gray-300 italic text-sm mt-6 animate-fadeup" 
+              className="text-white/80 italic text-sm mt-6 animate-fadeup" 
               style={{ animationDelay: '.2s' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

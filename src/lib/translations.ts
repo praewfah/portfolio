@@ -9,7 +9,7 @@ export const translations = {
       contact: 'Contact',
     },
     about: {
-      subtitle: 'Bachelor of Science in Computer Science',
+      subtitle: 'Software Developer • Senior Back-end Engineer',
       description1: 'Full Stack Developer with over 10 years of experience in designing and implementing scalable web applications across frontend and backend environments. Specialized in Python, React, Next.js, PHP, and MySQL/PostgreSQL/SQLite, with strong hands-on experience in Dockerized CI/CD environments, RESTful APIs, and cross-system integrations.',
       description2: 'Currently leading the development of multi-tenant gaming platforms, handling complex wallet systems, transaction concurrency, and real-time APIs for high-volume international users. Passionate about building efficient, maintainable systems and collaborating in diverse, international teams to deliver impactful digital solutions.',
     },
@@ -163,7 +163,7 @@ export const translations = {
       contact: 'ติดต่อ',
     },
     about: {
-      subtitle: 'ปริญญาตรีวิทยาศาสตร์ สาขาวิทยาการคอมพิวเตอร์',
+      subtitle: 'Software Developer • Senior Back-end Engineer',
       description1: 'นักพัฒนา Full Stack พร้อมประสบการณ์กว่า 10 ปีในการออกแบบและสร้างเว็บแอปพลิเคชันที่ปรับขยายได้ทั้งด้านหน้าบ้านและหลังบ้าน เชี่ยวชาญใน Python, React, Next.js, PHP และ MySQL/PostgreSQL/SQLite พร้อมประสบการณ์จริงในการใช้ Dockerized CI/CD, RESTful APIs และการบูรณาการข้ามระบบ',
       description2: 'ปัจจุบันนำการพัฒนาระบบเกม multi-tenant จัดการระบบกระเป๋าเงินที่ซับซ้อน การทำธุรกรรมพร้อมกัน และ API แบบเรียลไทม์สำหรับผู้ใช้ระดับนานาชาติที่มีปริมาณสูง มีความสนใจในการสร้างระบบที่มีประสิทธิภาพและบำรุงรักษาได้ รวมถึงการทำงานร่วมกับทีมที่มีความหลากหลายเพื่อส่งมอบโซลูชันดิจิทัลที่มีผลกระทบ',
     },

@@ -7,6 +7,7 @@ export default function Navbar() {
   const { language, setLanguage } = useLanguage();
   const t = translations[language];
   const [activeSection, setActiveSection] = useState("about");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
     { id: "about", label: t.nav.about },
@@ -39,12 +40,13 @@ export default function Navbar() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+    setIsMenuOpen(false);
   };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/90 border-b border-gray-200">
       <nav className="container flex items-center justify-between py-4">
-        <div className="flex gap-6">
+        <div className="hidden md:flex gap-6">
           {navItems.map((item) => {
             const active = activeSection === item.id;
             return (
@@ -73,7 +75,7 @@ export default function Navbar() {
             );
           })}
         </div>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-3">
           <button
             onClick={() => setLanguage('th')}
             className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
@@ -94,8 +96,50 @@ export default function Navbar() {
           >
             EN
           </button>
+          <button
+            type="button"
+            className="md:hidden inline-flex items-center justify-center rounded-md border border-gray-200 bg-white p-2 text-gray-700 shadow-sm transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            aria-label="Toggle navigation"
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? (
+              <svg className="h-5 w-5" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M4 4l12 12M16 4L4 16" />
+              </svg>
+            ) : (
+              <svg className="h-5 w-5" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M3 6h14M3 10h14M3 14h14" />
+              </svg>
+            )}
+          </button>
         </div>
       </nav>
+      {isMenuOpen && (
+        <div className="md:hidden border-t border-gray-200 bg-white/95 backdrop-blur">
+          <div className="container flex flex-col gap-2 py-3">
+            {navItems.map((item) => {
+              const active = activeSection === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`
+                    relative rounded-md px-3 py-2 text-left text-base font-medium transition-all duration-200
+                    ${
+                      active
+                        ? "text-gray-900 bg-gray-100"
+                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                    }
+                  `}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </header>
   );
 }
