@@ -9,10 +9,10 @@ export default function AboutSection() {
   const t = translations[language];
   return (
     <section id="about" className="relative">
-      <div className="relative h-[600px] md:h-[700px] w-full">
+      <div className="relative h-[550px] md:h-[800px] w-full">
         <Image 
           src="/p1.png" 
-          alt="hero" 
+          alt="Praew" 
           fill 
           priority 
           className="object-cover object-center" 
@@ -23,7 +23,7 @@ export default function AboutSection() {
         <div className="container absolute inset-0 flex items-center">
           <div>
             <motion.h1 
-              className="h1-hero animate-fadeup"
+              className="h1-hero animate-fadeup mt-3"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -38,6 +38,15 @@ export default function AboutSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               {t.about.subtitle}
+            </motion.p>
+            <motion.p 
+              className="text-white text-lg animate-fadeup" 
+              style={{ animationDelay: '.2s' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              {t.about.subtitle2}
             </motion.p>
             <motion.p 
               className="text-white/80 italic text-sm mt-6 animate-fadeup" 

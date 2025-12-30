@@ -15,7 +15,7 @@ export default function Navbar() {
     { id: "skills", label: t.nav.skills },
     { id: "education", label: t.nav.education },
     { id: "portfolio", label: t.nav.portfolio },
-    { id: "gallery", label: t.nav.gallery },
+    { id: "cardgame", label: t.nav.cardgame },
     { id: "contact", label: t.nav.contact },
   ];
 
@@ -78,16 +78,6 @@ export default function Navbar() {
         </div>
         <div className="flex items-center gap-3">
           <button
-            onClick={() => setLanguage('th')}
-            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-              language === 'th'
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}
-          >
-            ไทย
-          </button>
-          <button
             onClick={() => setLanguage('en')}
             className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
               language === 'en'
@@ -96,6 +86,16 @@ export default function Navbar() {
             }`}
           >
             EN
+          </button>
+          <button
+            onClick={() => setLanguage('th')}
+            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+              language === 'th'
+                ? 'bg-blue-500 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            }`}
+          >
+            ไทย
           </button>
           <button
             type="button"

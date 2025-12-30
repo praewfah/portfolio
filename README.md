@@ -14,7 +14,7 @@ A modern, responsive portfolio website built with Next.js, featuring bilingual s
   - Skills: Technical skills and specializations
   - Education: Academic background
   - Portfolio: Showcase of selected projects
-  - Gallery: Visual portfolio
+  - Card Game: Interactive card matching game with real API integration
   - Contact: Contact information and social links
 
 ## 🚀 Tech Stack
@@ -60,6 +60,8 @@ npm run dev
 ```
 portfolio/
 ├── public/              # Static assets (images, etc.)
+│   ├── README.md       # API documentation
+│   └── server.js       # API server code
 ├── src/
 │   ├── app/            # Next.js app directory
 │   │   ├── globals.css # Global styles
@@ -67,12 +69,15 @@ portfolio/
 │   │   └── page.tsx    # Home page
 │   ├── components/     # React components
 │   │   ├── AboutSection.tsx
+│   │   ├── CardGameSection.tsx
+│   │   ├── ClientWrapper.tsx
 │   │   ├── ContactSection.tsx
 │   │   ├── EducationSection.tsx
 │   │   ├── ExperienceSection.tsx
-│   │   ├── GallerySection.tsx
 │   │   ├── Nav.tsx
+│   │   ├── PageTransition.tsx
 │   │   ├── PortfolioSection.tsx
+│   │   ├── ScrollPager.tsx
 │   │   └── SkillsSection.tsx
 │   ├── contexts/       # React contexts
 │   │   └── LanguageContext.tsx
@@ -82,7 +87,6 @@ portfolio/
 ├── next.config.mjs
 ├── package.json
 ├── postcss.config.js
-├── server.js
 └── tailwind.config.ts
 ```
 
@@ -93,6 +97,20 @@ The portfolio supports two languages:
 - **English (EN)**: Secondary language
 
 Language switching is available in the navigation bar. All content is managed through the `translations.ts` file.
+
+## 🎮 Card Matching Game
+
+The portfolio includes an interactive card matching game that demonstrates real API integration:
+
+- **API Endpoint**: `https://api.aumaporn.com`
+- **Features**:
+  - Start new games with shuffled card decks
+  - Reveal cards via API calls
+  - Track moves, time, and score
+  - Submit scores and view leaderboard (Top 3)
+  - Persistent device ID using localStorage
+
+The game uses the card matching API built with Node.js, Express, Prisma, and MariaDB. See `public/README.md` for API documentation.
 
 ## 🎨 Customization
 
@@ -141,7 +159,7 @@ This project is private and proprietary.
   - ทักษะ: ทักษะทางเทคนิคและความเชี่ยวชาญพิเศษ
   - การศึกษา: ประวัติการศึกษา
   - Portfolio: แสดงผลงานที่เลือกมา
-  - แกลเลอรี่: Portfolio แบบภาพ
+  - เกมจับคู่การ์ด: เกมจับคู่การ์ดแบบอินเทอร์แอคทีฟที่เชื่อมต่อกับ API จริง
   - ติดต่อ: ข้อมูลติดต่อและลิงก์โซเชียล
 
 ## 🚀 เทคโนโลยีที่ใช้
@@ -187,6 +205,8 @@ npm run dev
 ```
 portfolio/
 ├── public/              # ไฟล์ static (รูปภาพ ฯลฯ)
+│   ├── README.md       # API documentation
+│   └── server.js       # API server code
 ├── src/
 │   ├── app/            # Next.js app directory
 │   │   ├── globals.css # สไตล์ global
@@ -194,12 +214,15 @@ portfolio/
 │   │   └── page.tsx    # หน้าแรก
 │   ├── components/     # React components
 │   │   ├── AboutSection.tsx
+│   │   ├── CardGameSection.tsx
+│   │   ├── ClientWrapper.tsx
 │   │   ├── ContactSection.tsx
 │   │   ├── EducationSection.tsx
 │   │   ├── ExperienceSection.tsx
-│   │   ├── GallerySection.tsx
 │   │   ├── Nav.tsx
+│   │   ├── PageTransition.tsx
 │   │   ├── PortfolioSection.tsx
+│   │   ├── ScrollPager.tsx
 │   │   └── SkillsSection.tsx
 │   ├── contexts/       # React contexts
 │   │   └── LanguageContext.tsx
@@ -209,7 +232,6 @@ portfolio/
 ├── next.config.mjs
 ├── package.json
 ├── postcss.config.js
-├── server.js
 └── tailwind.config.ts
 ```
 
@@ -220,6 +242,20 @@ Portfolio รองรับสองภาษา:
 - **English (EN)**: ภาษาที่สอง
 
 การสลับภาษาสามารถทำได้ที่แถบนำทาง เนื้อหาทั้งหมดจัดการผ่านไฟล์ `translations.ts`
+
+## 🎮 เกมจับคู่การ์ด
+
+Portfolio นี้มีเกมจับคู่การ์ดแบบอินเทอร์แอคทีฟที่แสดงการเชื่อมต่อกับ API จริง:
+
+- **API Endpoint**: `https://api.aumaporn.com`
+- **คุณสมบัติ**:
+  - เริ่มเกมใหม่พร้อมสำรับไพ่ที่สลับแล้ว
+  - เปิดการ์ดผ่าน API calls
+  - ติดตามจำนวนครั้งที่เปิด เวลา และคะแนน
+  - ส่งคะแนนและดูอันดับ (Top 3)
+  - ใช้ device ID แบบถาวรผ่าน localStorage
+
+เกมใช้ API เกมจับคู่การ์ดที่พัฒนาด้วย Node.js, Express, Prisma และ MariaDB ดูเอกสาร API ได้ที่ `public/README.md`
 
 ## 🎨 การปรับแต่ง
 

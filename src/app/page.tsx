@@ -3,7 +3,7 @@ import ExperienceSection from '../components/ExperienceSection';
 import SkillsSection from '../components/SkillsSection';
 import EducationSection from '../components/EducationSection';
 import PortfolioSection from '../components/PortfolioSection';
-import GallerySection from '../components/GallerySection';
+import CardGameSection from '../components/CardGameSection';
 import ContactSection from '../components/ContactSection';
 
 export default function LobbyPage() {
@@ -14,7 +14,7 @@ export default function LobbyPage() {
       <SkillsSection />
       <EducationSection />
       <PortfolioSection />
-      <GallerySection />
+      <CardGameSection />
       <ContactSection />
     </div>
   );

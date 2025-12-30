@@ -54,7 +54,7 @@ export default function SkillsSection() {
   return (
     <section id="skills" className="pt-12 pb-20">
       <div className="container">
-        <div className="divider mb-10" />
+        <div className="mb-10" />
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* LEFT: Technical Skills */}
