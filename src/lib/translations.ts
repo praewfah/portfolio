@@ -104,7 +104,6 @@ export const translations = {
         backend: [
           'PHP 8+',
           'Laravel',
-          'Symfony Components',
           'Node.js',
           'Python (FastAPI)',
           'MySQL',
@@ -196,7 +195,7 @@ export const translations = {
       phoneNumber: 'Phone Number',
       phoneNumberValue: '+66 84 659 5073',
       linkedin: 'LinkedIn',
-      linkedinValue: 'linkedin.com/in/aumaporn-tangmanosodsikul-1771431a4',
+      linkedinValue: 'linkedin.com/in/praew-1771431a4/',
       github: 'GitHub',
       githubValue: 'github.com/praewfah',
     },
@@ -332,7 +331,6 @@ export const translations = {
         backend: [
           'PHP 8+',
           'Laravel',
-          'Symfony Components',
           'Node.js',
           'Python (FastAPI)',
           'MySQL',
@@ -424,7 +422,7 @@ export const translations = {
       phoneNumber: 'เบอร์โทรศัพท์',
       phoneNumberValue: '+66 84 659 5073',
       linkedin: 'LinkedIn',
-      linkedinValue: 'linkedin.com/in/aumaporn-tangmanosodsikul-1771431a4',
+      linkedinValue: 'linkedin.com/in/praew-1771431a4/',
       github: 'GitHub',
       githubValue: 'github.com/praewfah',
     },
