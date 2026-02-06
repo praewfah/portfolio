@@ -15,6 +15,8 @@ export default function Navbar() {
     { id: "skills", label: t.nav.skills },
     { id: "education", label: t.nav.education },
     { id: "portfolio", label: t.nav.portfolio },
+    { id: "casestudies", label: t.nav.caseStudies },
+    { id: "architecture", label: t.nav.architecture },
     { id: "cardgame", label: t.nav.cardgame },
     { id: "contact", label: t.nav.contact },
   ];
@@ -46,7 +48,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/90 border-b border-gray-200">
-      <nav className="container flex items-center justify-between py-4">
+      <nav className="container flex items-center justify-between py-3 sm:py-4">
         <div className="hidden md:flex gap-6">
           {navItems.map((item) => {
             const active = activeSection === item.id;
@@ -55,7 +57,7 @@ export default function Navbar() {
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`
-                  relative text-base font-medium transition-all duration-200
+                  relative text-sm lg:text-base font-medium transition-all duration-200
                   ${
                     active
                       ? "text-gray-900"
@@ -79,7 +81,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setLanguage('en')}
-            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+            className={`px-2 sm:px-3 py-1 rounded text-xs sm:text-sm font-medium transition-colors ${
               language === 'en'
                 ? 'bg-blue-500 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -89,7 +91,7 @@ export default function Navbar() {
           </button>
           <button
             onClick={() => setLanguage('th')}
-            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+            className={`px-2 sm:px-3 py-1 rounded text-xs sm:text-sm font-medium transition-colors ${
               language === 'th'
                 ? 'bg-blue-500 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -126,7 +128,7 @@ export default function Navbar() {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`
-                    relative rounded-md px-3 py-2 text-left text-base font-medium transition-all duration-200
+                    relative rounded-md px-3 py-2 text-left text-sm font-medium transition-all duration-200
                     ${
                       active
                         ? "text-gray-900 bg-gray-100"

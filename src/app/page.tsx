@@ -3,6 +3,8 @@ import ExperienceSection from '../components/ExperienceSection';
 import SkillsSection from '../components/SkillsSection';
 import EducationSection from '../components/EducationSection';
 import PortfolioSection from '../components/PortfolioSection';
+import CaseStudiesSection from '../components/CaseStudiesSection';
+import ArchitectureSection from '../components/ArchitectureSection';
 import CardGameSection from '../components/CardGameSection';
 import ContactSection from '../components/ContactSection';
 
@@ -14,6 +16,8 @@ export default function LobbyPage() {
       <SkillsSection />
       <EducationSection />
       <PortfolioSection />
+      <CaseStudiesSection />
+      <ArchitectureSection />
       <CardGameSection />
       <ContactSection />
     </div>

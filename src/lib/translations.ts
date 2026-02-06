@@ -6,7 +6,8 @@ export const translations = {
       skills: 'Skills',
       education: 'Education',
       portfolio: 'Portfolio',
-      gallery: 'Gallery',
+      caseStudies: 'Case Studies',
+      architecture: 'Architecture & Design',
       cardgame: 'Card Game',
       contact: 'Contact',
     },
@@ -185,6 +186,420 @@ export const translations = {
         },
       ],
     },
+    caseStudies: {
+      title: 'CASE STUDIES',
+      subtitle: 'Selected technical challenges and solutions',
+      study1: {
+        title: 'Loyalty Kafka / Real-Time System',
+        overview: 'Designed and implemented a real-time loyalty processing system using Kafka to handle high-volume user events across multiple gaming platforms. The goal was to process user activities instantly and update loyalty points, tiers, and rewards in near real-time.',
+        blocks: [
+          {
+            title: 'Problem',
+            items: [
+              'Loyalty events were originally processed in batch, causing delays',
+              'High traffic generated thousands of events per second',
+              'Risk of data inconsistency across services',
+              'Need for reliable event processing with minimal latency',
+              'Difficulty scaling the system as user base grew',
+            ],
+          },
+          {
+            title: 'Challenges',
+            items: [
+              'Handling large streams of concurrent events',
+              'Ensuring message ordering and reliability',
+              'Avoiding duplicate processing',
+              'Maintaining performance under peak load',
+              'Synchronizing data across multiple services',
+            ],
+          },
+          {
+            title: 'My Approach',
+            items: [
+              'Introduced Kafka as the central event streaming platform',
+              'Designed event-driven architecture for loyalty processing',
+              'Implemented consumer services to process events asynchronously',
+              'Added idempotent processing to prevent duplicates',
+              'Used Redis for caching frequently accessed loyalty data',
+              'Built monitoring and logging for event traceability',
+            ],
+          },
+          {
+            title: 'Technologies Used',
+            items: [
+              'Kafka',
+              'Python / FastAPI',
+              'Node.js',
+              'PostgreSQL',
+              'Redis',
+              'Docker & CI/CD',
+            ],
+          },
+          {
+            title: 'Results',
+            items: [
+              'Loyalty updates became near real-time',
+              'System handled significantly higher event volume',
+              'Improved reliability and fault tolerance',
+              'Better scalability for future growth',
+              'Clear visibility into event processing flow',
+            ],
+          },
+        ],
+      },
+      study2: {
+        title: 'Loyalty Daily Quest / Weekly Quest System',
+        overview: 'Developed a flexible quest and reward system that allows players to complete daily and weekly missions to earn loyalty points and rewards. The system needed to be dynamic, configurable, and able to process large numbers of users efficiently.',
+        blocks: [
+          {
+            title: 'Problem',
+            items: [
+              'Existing loyalty logic was rigid and difficult to extend',
+              'Business required frequent changes to quest rules',
+              'Heavy database queries slowed down processing',
+              'Need to evaluate user activities in real time',
+              'Complex conditions for quest completion',
+            ],
+          },
+          {
+            title: 'Challenges',
+            items: [
+              'Designing a rule engine flexible enough for changing requirements',
+              'Tracking user progress across multiple quests',
+              'Handling large datasets without performance degradation',
+              'Supporting both daily resets and weekly cycles',
+            ],
+          },
+          {
+            title: 'My Approach',
+            items: [
+              'Designed a modular quest engine with configurable rules',
+              'Implemented background processing for quest evaluation',
+              'Used Kafka events to track user actions',
+              'Optimized database queries for progress tracking',
+              'Built admin tools for business users to manage quests',
+              'Added caching layers to reduce database load',
+            ],
+          },
+          {
+            title: 'Technologies Used',
+            items: [
+              'FastAPI / Node.js',
+              'Kafka',
+              'PostgreSQL',
+              'Redis',
+              'REST APIs',
+            ],
+          },
+          {
+            title: 'Results',
+            items: [
+              'Business team gained flexibility to create new quests easily',
+              'Real-time quest progress tracking for users',
+              'Reduced manual intervention',
+              'Improved system performance and scalability',
+              'More engaging loyalty experience for players',
+            ],
+          },
+        ],
+      },
+      study3: {
+        title: 'Affiliate Campaign Daily Calculation Optimization',
+        overview: 'Optimized a critical daily batch processing system responsible for calculating affiliate commissions for thousands of users. The original process struggled to complete on time as data volume increased.',
+        blocks: [
+          {
+            title: 'Problem',
+            items: [
+              'Daily calculation job took too long to finish',
+              'Heavy database load during processing',
+              'Recalculated the same data repeatedly',
+              'System performance degraded as user base grew',
+              'Risk of missing daily processing windows',
+            ],
+          },
+          {
+            title: 'Challenges',
+            items: [
+              'Processing millions of transaction records',
+              'Complex affiliate hierarchies',
+              'Ensuring financial accuracy',
+              'Preventing database timeouts',
+              'Balancing speed and correctness',
+            ],
+          },
+          {
+            title: 'My Approach',
+            items: [
+              'Refactored logic to process only incremental changes',
+              'Redesigned SQL queries with proper indexes',
+              'Split processing into smaller, independent tasks',
+              'Introduced caching for frequently used data',
+              'Optimized data aggregation strategies',
+              'Improved error handling and logging',
+            ],
+          },
+          {
+            title: 'Technologies Used',
+            items: [
+              'Python / FastAPI',
+              'PostgreSQL',
+              'SQLAlchemy',
+              'Redis',
+              'Docker',
+            ],
+          },
+          {
+            title: 'Results',
+            items: [
+              'Execution time reduced dramatically',
+              'Lower server resource consumption',
+              'More predictable job completion',
+              'Increased stability and maintainability',
+              'Ability to scale with growing data volume',
+            ],
+          },
+        ],
+      },
+    },
+    architecture: {
+      title: 'ARCHITECTURE & DESIGN',
+      subtitle: 'Architecture patterns and system design choices',
+      sections: [
+        {
+          title: 'Event-Driven Loyalty Architecture (Kafka-Based)',
+          overview: 'The loyalty platform was redesigned to operate as a real-time, event-driven system using Kafka as the central messaging backbone. This architecture enables immediate processing of user activities across multiple gaming applications while maintaining reliability and scalability.',
+          blocks: [
+            {
+              title: 'High-Level Architecture Components',
+              items: [
+                'API Gateway',
+                'Event Producers (Game Services)',
+                'Kafka Cluster',
+                'Loyalty Consumer Services',
+                'PostgreSQL Database',
+                'Redis Cache Layer',
+                'Monitoring & Logging Services',
+              ],
+            },
+            {
+              title: 'Design Goals',
+              items: [
+                'Near real-time loyalty updates',
+                'High throughput event processing',
+                'Fault tolerance',
+                'Data consistency',
+                'Horizontal scalability',
+                'Clear observability',
+              ],
+            },
+            {
+              title: 'Event Flow Design',
+              items: [
+                'User performs an action in the game',
+                'Game service publishes an event to Kafka',
+                'Loyalty consumer receives the event',
+                'Business rules are evaluated',
+                'Points and progress are updated',
+                'Results are stored in PostgreSQL',
+                'Frequently used data cached in Redis',
+                'Updated status returned to user services',
+              ],
+            },
+            {
+              title: 'Key Technical Decisions',
+              items: [
+                'Kafka used as the single source of truth for events',
+                'Idempotent consumers to prevent duplicate processing',
+                'Partitioned topics for scalability',
+                'Retry queues for failed events',
+                'Structured logging for full traceability',
+              ],
+            },
+            {
+              title: 'Benefits',
+              items: [
+                'Real-time responsiveness',
+                'Decoupled services',
+                'Improved reliability',
+                'Easy to extend with new event types',
+                'Ability to handle growing traffic',
+              ],
+            },
+          ],
+        },
+        {
+          title: 'Loyalty Daily & Weekly Quest System Design',
+          overview: 'The quest system was designed as a modular rule-based engine capable of tracking user progress across multiple activities, with support for daily resets and weekly cycles.',
+          blocks: [
+            {
+              title: 'Core Architectural Concepts',
+              items: [
+                'Rule Engine',
+                'Quest Definition Service',
+                'Progress Tracking Service',
+                'Event Processing Layer',
+                'Data Storage Layer',
+                'Admin Configuration Tools',
+              ],
+            },
+            {
+              title: 'Data Model Design',
+              items: [
+                'Quest Definitions',
+                'User Progress',
+                'Reward Conditions',
+                'Reset Schedules',
+                'Activity Logs',
+              ],
+            },
+            {
+              title: 'Processing Flow',
+              items: [
+                'User action generates an event',
+                'Event is sent to Kafka',
+                'Quest processor evaluates rules',
+                'Progress is updated',
+                'Completion status is calculated',
+                'Rewards are issued when conditions met',
+              ],
+            },
+            {
+              title: 'Scalability Considerations',
+              items: [
+                'Stateless processing services',
+                'Redis used for fast progress lookups',
+                'Batched database updates',
+                'Cached quest configurations',
+                'Asynchronous processing for heavy tasks',
+              ],
+            },
+            {
+              title: 'Reliability Measures',
+              items: [
+                'Idempotent progress updates',
+                'Safe reset mechanisms',
+                'Graceful failure handling',
+                'Monitoring for delayed events',
+              ],
+            },
+            {
+              title: 'Design Outcomes',
+              items: [
+                'Flexible quest configuration',
+                'Easy addition of new quest types',
+                'Consistent performance at scale',
+                'Real-time feedback for users',
+                'Reduced operational overhead',
+              ],
+            },
+          ],
+        },
+        {
+          title: 'Affiliate Campaign Calculation Architecture',
+          overview: 'The affiliate calculation system processes large volumes of transactional data daily to compute commissions across hierarchical affiliate structures. The architecture focuses on accuracy, performance, and maintainability.',
+          blocks: [
+            {
+              title: 'System Components',
+              items: [
+                'Data Aggregation Layer',
+                'Calculation Engine',
+                'PostgreSQL Database',
+                'Redis Caching',
+                'Job Scheduler',
+                'Reporting Services',
+              ],
+            },
+            {
+              title: 'Architecture Principles',
+              items: [
+                'Incremental Processing',
+                'Separation of concerns',
+                'Deterministic calculations',
+                'Efficient data access',
+                'Clear audit trails',
+              ],
+            },
+            {
+              title: 'Processing Workflow',
+              items: [
+                'Collect new transactions for the day',
+                'Aggregate relevant data',
+                'Calculate commissions per user',
+                'Update affiliate balances',
+                'Generate reports',
+                'Store calculation history',
+              ],
+            },
+            {
+              title: 'Optimization Strategies',
+              items: [
+                'Process only changed data instead of full recalculations',
+                'Proper indexing and query optimization',
+                'Parallel execution of independent tasks',
+                'Cached lookup tables',
+                'Batched database operations',
+              ],
+            },
+            {
+              title: 'Reliability Design',
+              items: [
+                'Transaction-safe calculations',
+                'Detailed logging',
+                'Rollback mechanisms',
+                'Job monitoring and alerts',
+                'Idempotent processing',
+              ],
+            },
+            {
+              title: 'Results of the Architecture',
+              items: [
+                'Predictable execution time',
+                'Lower resource consumption',
+                'Easier maintenance',
+                'Scalable with growing user base',
+                'Accurate financial calculations',
+              ],
+            },
+          ],
+        },
+        {
+          title: 'Cross-Cutting Design Practices',
+          overview: 'These practices were applied across all systems:',
+          blocks: [
+            {
+              title: 'Performance & Scalability',
+              items: [
+                'Database indexing and tuning',
+                'Redis caching',
+                'Asynchronous processing',
+                'Horizontal service scaling',
+                'Rate limiting and throttling',
+              ],
+            },
+            {
+              title: 'Reliability',
+              items: [
+                'Structured error handling',
+                'Retry mechanisms',
+                'Idempotent operations',
+                'Monitoring and alerting',
+                'Comprehensive logging',
+              ],
+            },
+            {
+              title: 'Development Workflow',
+              items: [
+                'Dockerized environments',
+                'CI/CD pipelines',
+                'Automated testing',
+                'Code reviews',
+                'Agile methodologies',
+              ],
+            },
+          ],
+        },
+      ],
+    },
     contact: {
       title: 'GET IN TOUCH',
       stayingAt: 'Staying At',
@@ -233,6 +648,8 @@ export const translations = {
       skills: 'ทักษะ',
       education: 'การศึกษา',
       portfolio: 'ผลงาน',
+      caseStudies: 'Case Studies',
+      architecture: 'Architecture & Design',
       gallery: 'แกลเลอรี่',
       cardgame: 'เกมจับคู่',
       contact: 'ติดต่อ',
@@ -409,6 +826,420 @@ export const translations = {
           description: 'เกมจับคู่การ์ดแบบคลาสสิกที่พัฒนาด้วย PHP เพื่อฝึกงานด้านเกม',
           tech: ['PHP', 'JavaScript'],
           url: 'https://github.com/praewfah/memory-game-card',
+        },
+      ],
+    },
+    caseStudies: {
+      title: 'CASE STUDIES',
+      subtitle: 'ตัวอย่างโจทย์ทางเทคนิคและแนวทางแก้ไข',
+      study1: {
+        title: 'Loyalty Kafka / Real-Time System',
+        overview: 'ออกแบบและพัฒนาระบบประมวลผล loyalty แบบเรียลไทม์ด้วย Kafka เพื่อรองรับ event ปริมาณสูงจากผู้ใช้ในหลายแพลตฟอร์มเกม โดยมีเป้าหมายให้ประมวลผลกิจกรรมได้ทันทีและอัปเดตแต้ม ระดับ และรางวัลได้เกือบเรียลไทม์',
+        blocks: [
+          {
+            title: 'ปัญหา',
+            items: [
+              'เดิมประมวลผล event แบบ batch ทำให้เกิดความหน่วง',
+              'ทราฟฟิกสูงเกิด event หลายพันครั้งต่อวินาที',
+              'เสี่ยงข้อมูลไม่สอดคล้องกันระหว่างบริการ',
+              'ต้องการประมวลผลที่เชื่อถือได้และ latency ต่ำ',
+              'การ scale ระบบยากเมื่อจำนวนผู้ใช้เพิ่ม',
+            ],
+          },
+          {
+            title: 'ความท้าทาย',
+            items: [
+              'รองรับสตรีม event พร้อมกันจำนวนมาก',
+              'ทำ message ordering และ reliability ให้ถูกต้อง',
+              'หลีกเลี่ยงการประมวลผลซ้ำ',
+              'รักษาประสิทธิภาพในช่วง peak load',
+              'ซิงก์ข้อมูลข้ามหลายบริการให้สอดคล้องกัน',
+            ],
+          },
+          {
+            title: 'แนวทางของฉัน',
+            items: [
+              'นำ Kafka มาเป็นแกนกลางของ event streaming',
+              'ออกแบบสถาปัตยกรรมแบบ event-driven สำหรับ loyalty processing',
+              'พัฒนา consumer services เพื่อประมวลผลแบบ async',
+              'เพิ่ม idempotent processing เพื่อป้องกัน duplicate',
+              'ใช้ Redis cache สำหรับข้อมูล loyalty ที่ถูกอ่านบ่อย',
+              'สร้าง monitoring และ logging เพื่อ trace event ได้',
+            ],
+          },
+          {
+            title: 'เทคโนโลยีที่ใช้',
+            items: [
+              'Kafka',
+              'Python / FastAPI',
+              'Node.js',
+              'PostgreSQL',
+              'Redis',
+              'Docker & CI/CD',
+            ],
+          },
+          {
+            title: 'ผลลัพธ์',
+            items: [
+              'อัปเดต loyalty ได้เกือบเรียลไทม์',
+              'รองรับปริมาณ event ได้สูงขึ้นอย่างมาก',
+              'ความน่าเชื่อถือและ fault tolerance ดีขึ้น',
+              'สเกลง่ายขึ้นรองรับการเติบโตในอนาคต',
+              'มองเห็นโฟลว์การประมวลผล event ชัดเจนขึ้น',
+            ],
+          },
+        ],
+      },
+      study2: {
+        title: 'Loyalty Daily Quest / Weekly Quest System',
+        overview: 'พัฒนาระบบ quest และ reward ที่ยืดหยุ่น ให้ผู้เล่นทำภารกิจรายวัน/รายสัปดาห์เพื่อรับแต้มและรางวัล ระบบต้องปรับแต่งได้ง่าย ตั้งค่าได้ และรองรับผู้ใช้จำนวนมากอย่างมีประสิทธิภาพ',
+        blocks: [
+          {
+            title: 'ปัญหา',
+            items: [
+              'ตรรกะ loyalty เดิมแข็งและขยายยาก',
+              'ธุรกิจต้องปรับกฎ quest บ่อย',
+              'query หนักทำให้ประมวลผลช้า',
+              'ต้องประเมินกิจกรรมผู้ใช้แบบเรียลไทม์',
+              'เงื่อนไขการทำ quest สำเร็จมีความซับซ้อน',
+            ],
+          },
+          {
+            title: 'ความท้าทาย',
+            items: [
+              'ออกแบบ rule engine ให้ยืดหยุ่นต่อ requirement ที่เปลี่ยนบ่อย',
+              'ติดตาม progress ของผู้ใช้ในหลาย quest',
+              'จัดการข้อมูลขนาดใหญ่โดยไม่ให้ performance ตก',
+              'รองรับทั้ง daily reset และ weekly cycle',
+            ],
+          },
+          {
+            title: 'แนวทางของฉัน',
+            items: [
+              'ออกแบบ quest engine แบบ modular และตั้งค่ากฎได้',
+              'เพิ่ม background processing สำหรับการประเมิน quest',
+              'ใช้ Kafka events เพื่อติดตาม user actions',
+              'ปรับ query สำหรับการ track progress ให้มีประสิทธิภาพ',
+              'สร้างเครื่องมือ admin ให้ธุรกิจจัดการ quest ได้',
+              'เพิ่ม caching layer เพื่อลดโหลดฐานข้อมูล',
+            ],
+          },
+          {
+            title: 'เทคโนโลยีที่ใช้',
+            items: [
+              'FastAPI / Node.js',
+              'Kafka',
+              'PostgreSQL',
+              'Redis',
+              'REST APIs',
+            ],
+          },
+          {
+            title: 'ผลลัพธ์',
+            items: [
+              'ทีมธุรกิจสร้าง quest ใหม่ได้ง่ายและยืดหยุ่นขึ้น',
+              'ติดตาม progress แบบเรียลไทม์สำหรับผู้ใช้',
+              'ลดงาน manual intervention',
+              'ประสิทธิภาพและ scalability ดีขึ้น',
+              'ประสบการณ์ loyalty ของผู้เล่นน่าสนใจขึ้น',
+            ],
+          },
+        ],
+      },
+      study3: {
+        title: 'Affiliate Campaign Daily Calculation Optimization',
+        overview: 'ปรับปรุงระบบ batch รายวันที่สำคัญซึ่งใช้คำนวณค่าคอมมิชชันพันธมิตรสำหรับผู้ใช้หลายพันราย โดยกระบวนการเดิมเริ่มทำงานไม่ทันเมื่อปริมาณข้อมูลเพิ่มขึ้น',
+        blocks: [
+          {
+            title: 'ปัญหา',
+            items: [
+              'งานคำนวณรายวันใช้เวลานานเกินไป',
+              'ฐานข้อมูลโหลดหนักระหว่างประมวลผล',
+              'คำนวณข้อมูลเดิมซ้ำหลายรอบ',
+              'performance ของระบบแย่ลงเมื่อผู้ใช้เพิ่ม',
+              'เสี่ยงพลาดช่วงเวลาการประมวลผลรายวัน',
+            ],
+          },
+          {
+            title: 'ความท้าทาย',
+            items: [
+              'ประมวลผลธุรกรรมระดับล้านเรคคอร์ด',
+              'โครงสร้าง affiliate ลำดับชั้นซับซ้อน',
+              'ต้องคำนวณการเงินอย่างแม่นยำ',
+              'ป้องกัน database timeouts',
+              'บาลานซ์ความเร็วกับความถูกต้อง',
+            ],
+          },
+          {
+            title: 'แนวทางของฉัน',
+            items: [
+              'refactor ให้ประมวลผลเฉพาะการเปลี่ยนแปลงแบบ incremental',
+              'ออกแบบ SQL queries ใหม่พร้อม indexes ที่เหมาะสม',
+              'แยกงานเป็น task ย่อยที่เป็นอิสระต่อกัน',
+              'เพิ่ม caching สำหรับข้อมูลที่ถูกใช้บ่อย',
+              'ปรับกลยุทธ์การ aggregate ข้อมูล',
+              'ปรับปรุง error handling และ logging',
+            ],
+          },
+          {
+            title: 'เทคโนโลยีที่ใช้',
+            items: [
+              'Python / FastAPI',
+              'PostgreSQL',
+              'SQLAlchemy',
+              'Redis',
+              'Docker',
+            ],
+          },
+          {
+            title: 'ผลลัพธ์',
+            items: [
+              'ลดเวลา execution ลงอย่างมาก',
+              'ลดการใช้ทรัพยากรเซิร์ฟเวอร์',
+              'งานจบได้คาดการณ์ได้มากขึ้น',
+              'เสถียรและบำรุงรักษาง่ายขึ้น',
+              'รองรับการเติบโตของปริมาณข้อมูลได้',
+            ],
+          },
+        ],
+      },
+    },
+    architecture: {
+      title: 'ARCHITECTURE & DESIGN',
+      subtitle: 'แนวทางออกแบบสถาปัตยกรรมและการตัดสินใจเชิงระบบ',
+      sections: [
+        {
+          title: 'Event-Driven Loyalty Architecture (Kafka-Based)',
+          overview: 'ปรับระบบ loyalty ให้เป็น event-driven แบบเรียลไทม์ โดยใช้ Kafka เป็น messaging backbone หลัก ทำให้ประมวลผลกิจกรรมผู้ใช้ได้ทันทีในหลายแอปเกม พร้อมคงไว้ซึ่งความน่าเชื่อถือ ความสามารถในการ scale และความสอดคล้องของข้อมูล',
+          blocks: [
+            {
+              title: 'High-Level Architecture Components',
+              items: [
+                'API Gateway',
+                'Event Producers (Game Services)',
+                'Kafka Cluster',
+                'Loyalty Consumer Services',
+                'PostgreSQL Database',
+                'Redis Cache Layer',
+                'Monitoring & Logging Services',
+              ],
+            },
+            {
+              title: 'Design Goals',
+              items: [
+                'Near real-time loyalty updates',
+                'High throughput event processing',
+                'Fault tolerance',
+                'Data consistency',
+                'Horizontal scalability',
+                'Clear observability',
+              ],
+            },
+            {
+              title: 'Event Flow Design',
+              items: [
+                'ผู้ใช้ทำ action ในเกม',
+                'Game service publish event เข้า Kafka',
+                'Loyalty consumer รับ event',
+                'ประเมิน business rules',
+                'อัปเดตแต้มและ progress',
+                'บันทึกผลลง PostgreSQL',
+                'cache ข้อมูลที่ถูกใช้บ่อยไว้ใน Redis',
+                'ส่งสถานะอัปเดตกลับไปยัง user services',
+              ],
+            },
+            {
+              title: 'Key Technical Decisions',
+              items: [
+                'ใช้ Kafka เป็น single source of truth ของ events',
+                'ทำ consumer แบบ idempotent เพื่อป้องกัน duplicate processing',
+                'แบ่ง topic เป็น partitions เพื่อ scale',
+                'มี retry queues สำหรับ event ที่ fail',
+                'structured logging เพื่อ trace ได้ครบถ้วน',
+              ],
+            },
+            {
+              title: 'Benefits',
+              items: [
+                'ตอบสนองแบบเรียลไทม์',
+                'บริการแยกอิสระกัน (decoupled)',
+                'ความน่าเชื่อถือดีขึ้น',
+                'ขยายเพิ่ม event types ใหม่ได้ง่าย',
+                'รองรับทราฟฟิกที่เติบโตได้',
+              ],
+            },
+          ],
+        },
+        {
+          title: 'Loyalty Daily & Weekly Quest System Design',
+          overview: 'ออกแบบระบบ quest เป็น rule-based engine แบบ modular ที่ติดตาม progress ผู้ใช้ได้หลายกิจกรรม รองรับ daily reset และ weekly cycle',
+          blocks: [
+            {
+              title: 'Core Architectural Concepts',
+              items: [
+                'Rule Engine',
+                'Quest Definition Service',
+                'Progress Tracking Service',
+                'Event Processing Layer',
+                'Data Storage Layer',
+                'Admin Configuration Tools',
+              ],
+            },
+            {
+              title: 'Data Model Design',
+              items: [
+                'Quest Definitions',
+                'User Progress',
+                'Reward Conditions',
+                'Reset Schedules',
+                'Activity Logs',
+              ],
+            },
+            {
+              title: 'Processing Flow',
+              items: [
+                'User action สร้าง event',
+                'ส่ง event เข้า Kafka',
+                'Quest processor ประเมิน rules',
+                'อัปเดต progress',
+                'คำนวณสถานะ completion',
+                'ออก reward เมื่อเงื่อนไขครบ',
+              ],
+            },
+            {
+              title: 'Scalability Considerations',
+              items: [
+                'บริการประมวลผลแบบ stateless',
+                'ใช้ Redis สำหรับ lookup progress อย่างรวดเร็ว',
+                'อัปเดตฐานข้อมูลแบบ batch',
+                'cache quest configurations',
+                'ทำ async สำหรับงานหนัก',
+              ],
+            },
+            {
+              title: 'Reliability Measures',
+              items: [
+                'อัปเดต progress แบบ idempotent',
+                'reset mechanisms ที่ปลอดภัย',
+                'จัดการความล้มเหลวแบบ graceful',
+                'monitoring สำหรับ event ที่ล่าช้า',
+              ],
+            },
+            {
+              title: 'Design Outcomes',
+              items: [
+                'ตั้งค่า quest ได้ยืดหยุ่น',
+                'เพิ่ม quest types ใหม่ได้ง่าย',
+                'performance สม่ำเสมอเมื่อ scale',
+                'feedback แบบเรียลไทม์สำหรับผู้ใช้',
+                'ลดภาระงานปฏิบัติการ',
+              ],
+            },
+          ],
+        },
+        {
+          title: 'Affiliate Campaign Calculation Architecture',
+          overview: 'สถาปัตยกรรมระบบคำนวณ affiliate ประมวลผลข้อมูลธุรกรรมจำนวนมากรายวันเพื่อคำนวณค่าคอมมิชชันตามโครงสร้างลำดับชั้น โดยโฟกัสที่ความถูกต้อง ประสิทธิภาพ และการดูแลรักษา',
+          blocks: [
+            {
+              title: 'System Components',
+              items: [
+                'Data Aggregation Layer',
+                'Calculation Engine',
+                'PostgreSQL Database',
+                'Redis Caching',
+                'Job Scheduler',
+                'Reporting Services',
+              ],
+            },
+            {
+              title: 'Architecture Principles',
+              items: [
+                'Incremental Processing',
+                'Separation of concerns',
+                'Deterministic calculations',
+                'Efficient data access',
+                'Clear audit trails',
+              ],
+            },
+            {
+              title: 'Processing Workflow',
+              items: [
+                'รวบรวมธุรกรรมใหม่ของวัน',
+                'aggregate ข้อมูลที่เกี่ยวข้อง',
+                'คำนวณค่าคอมมิชชันรายผู้ใช้',
+                'อัปเดตยอดคงเหลือ affiliate',
+                'สร้างรายงาน',
+                'เก็บประวัติการคำนวณ',
+              ],
+            },
+            {
+              title: 'Optimization Strategies',
+              items: [
+                'ประมวลผลเฉพาะข้อมูลที่เปลี่ยนแปลง แทนการคำนวณใหม่ทั้งหมด',
+                'indexing และ query optimization ที่เหมาะสม',
+                'รันงานอิสระกันแบบขนาน',
+                'cache lookup tables',
+                'ทำ database operations แบบ batch',
+              ],
+            },
+            {
+              title: 'Reliability Design',
+              items: [
+                'คำนวณแบบ transaction-safe',
+                'logging รายละเอียด',
+                'rollback mechanisms',
+                'job monitoring และ alerts',
+                'idempotent processing',
+              ],
+            },
+            {
+              title: 'Results of the Architecture',
+              items: [
+                'เวลา execution คาดการณ์ได้',
+                'ใช้ทรัพยากรลดลง',
+                'ดูแลรักษาง่ายขึ้น',
+                'สเกลได้ตามจำนวนผู้ใช้ที่เติบโต',
+                'คำนวณการเงินได้แม่นยำ',
+              ],
+            },
+          ],
+        },
+        {
+          title: 'Cross-Cutting Design Practices',
+          overview: 'แนวทางเหล่านี้ถูกใช้ร่วมกันในทุกระบบ:',
+          blocks: [
+            {
+              title: 'Performance & Scalability',
+              items: [
+                'Database indexing และ tuning',
+                'Redis caching',
+                'Asynchronous processing',
+                'Horizontal service scaling',
+                'Rate limiting และ throttling',
+              ],
+            },
+            {
+              title: 'Reliability',
+              items: [
+                'Structured error handling',
+                'Retry mechanisms',
+                'Idempotent operations',
+                'Monitoring และ alerting',
+                'Comprehensive logging',
+              ],
+            },
+            {
+              title: 'Development Workflow',
+              items: [
+                'Dockerized environments',
+                'CI/CD pipelines',
+                'Automated testing',
+                'Code reviews',
+                'Agile methodologies',
+              ],
+            },
+          ],
         },
       ],
     },
