@@ -22,7 +22,7 @@ export const translations = {
       bluepi: {
         company: 'BluePi Co., Ltd.',
         role: 'Senior Back-end Engineer',
-        date: 'April 2021 - Present',
+        date: 'April 2021 - February 2026',
         bullets: [
           'Developed and maintained multi-app gaming ecosystem using Next.js (React) and FastAPI/PHP backends.',
           'Integrated payment gateways, external APIs, and seamless wallet logic for cross-platform gaming systems.',
@@ -665,7 +665,7 @@ export const translations = {
       bluepi: {
         company: 'บริษัท บลูพาย จำกัด',
         role: 'Senior Back-end Engineer',
-        date: 'เมษายน 2021 - ปัจจุบัน',
+        date: 'เมษายน 2021 - กุมภาพันธ์ 2026',
         bullets: [
           'พัฒนาและดูแลระบบเกมแบบหลายแอปพลิเคชันด้วย Next.js (React) และ FastAPI/PHP',
           'บูรณาการเกตเวย์การชำระเงิน APIs ภายนอก และลอจิกกระเป๋าเงินสำหรับระบบเกมข้ามแพลตฟอร์ม',
