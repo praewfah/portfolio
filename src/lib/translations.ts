@@ -14,7 +14,7 @@ export const translations = {
     about: {
       subtitle: 'Software Developer',
       subtitle2: 'Senior Back-End Engineer',
-      description1: 'Full Stack Developer with over 10 years of experience in designing and implementing scalable web applications across frontend and backend environments. Specialized in Python, React, Next.js, PHP, and MySQL/PostgreSQL/SQLite, with strong hands-on experience in Dockerized CI/CD environments, RESTful APIs, and cross-system integrations.',
+      description1: 'Full Stack Developer with over 10 years of experience in designing and implementing scalable web applications across frontend and backend environments. Strong specialization in Python and Node.js backend architecture, AI/LLM integration, payment systems, and database performance optimization. Also skilled in React, Next.js, PHP, and MySQL/PostgreSQL/SQLite, with strong hands-on experience in Dockerized CI/CD environments, RESTful APIs, and cross-system integrations.',
       description2: 'Currently leading the development of multi-tenant gaming platforms, handling complex wallet systems, transaction concurrency, and real-time APIs for high-volume international users. Passionate about building efficient, maintainable systems and collaborating in diverse, international teams to deliver impactful digital solutions.',
     },
     experience: {
@@ -82,6 +82,7 @@ export const translations = {
       title: 'TECHNICAL SKILLS',
       frontend: 'Frontend Development',
       backend: 'Backend Development',
+      ai: 'AI & Intelligent Systems',
       api: 'API & Integration',
       devops: 'DevOps & Tools',
       specialization: 'SPECIALIZATIONS',
@@ -110,6 +111,13 @@ export const translations = {
           'MySQL',
           'PostgreSQL',
           'Redis',
+        ],
+        ai: [
+          'LLM workflows & provider abstraction',
+          'AI/ML & third-party API integration',
+          'Secure webhooks, idempotency & payment sync',
+          'Digital fulfillment & signed asset delivery',
+          'Async-ready service design (future AI generation)',
         ],
         api: [
           'RESTful APIs',
@@ -149,10 +157,46 @@ export const translations = {
       subtitle: 'Selected projects and experiments',
       projects: [
         {
-          name: 'bot-line',
-          description: 'LINE chatbot “เลขมงคล” that notifies operators when conversations need attention.',
-          tech: ['PHP', 'Heroku', 'LINE Messaging API'],
-          url: 'https://github.com/praewfah/bot-line',
+          name: 'Fortune Wallpaper',
+          description:
+            'Personal project: AI-powered fortune telling and digital wallpaper monetization — FastAPI backend with pluggable LLM and astrology providers, PromptPay QR via Omise / GB Prime Pay, and secure webhooks for payments and fulfillment.',
+          tech: [
+            'FastAPI',
+            'SQLAlchemy',
+            'PostgreSQL',
+            'Docker',
+            'LLM APIs',
+            'Omise / GB Prime Pay',
+          ],
+          url: '',
+        },
+        {
+          name: 'rate-throttle-api',
+          description:
+            'Three-service FastAPI demo — caller orchestrates phased load, throttle-service queues and rate-limits via Redis, echo-service applies its own window cap — Docker Compose, httpx, configurable limits and logging.',
+          tech: ['FastAPI', 'Redis', 'Docker', 'Python'],
+          url: 'https://github.com/praewfah/rate-throttle-api',
+        },
+        {
+          name: 'python-user-management-api',
+          description:
+            'REST API for user CRUD with layered architecture (routes, services, repositories), validation, soft delete and restore-by-email, search and offset pagination, and pytest coverage — FastAPI, SQLAlchemy, PostgreSQL, Alembic, Docker.',
+          tech: ['FastAPI', 'SQLAlchemy', 'PostgreSQL', 'Alembic', 'Docker'],
+          url: 'https://github.com/praewfah/python-user-management-api',
+        },
+        {
+          name: 'react-user-management-ui',
+          description:
+            'React + Vite front-end for the user-management API: data table, debounced search, create/edit/remove, duplicate-email restore flow, pagination against the API contract, and optional mock mode.',
+          tech: ['React', 'Vite', 'JavaScript'],
+          url: 'https://github.com/praewfah/react-user-management-ui',
+        },
+        {
+          name: 'ez-sandbox',
+          description:
+            'B2C digital gift card integration demo: Express API creates local orders, buys from EZ Sandbox supplier APIs, reuses pooled cancelled-but-completed EZ transactions, background polling with timeout, redeem codes via POST /orders and GET /orders/:id.',
+          tech: ['Node.js', 'Express', 'JavaScript'],
+          url: 'https://github.com/praewfah/ez-sandbox',
         },
         {
           name: 'card-match-api-node',
@@ -161,28 +205,10 @@ export const translations = {
           url: 'https://github.com/praewfah/card-match-api-node',
         },
         {
-          name: 'Map-Search-Application',
-          description: 'Responsive single-page map app that surfaces tweets mentioning the searched city.',
-          tech: ['PHP', 'JavaScript', 'Twitter API'],
-          url: 'https://github.com/praewfah/Map-Search-Application',
-        },
-        {
           name: 'portfolio',
           description: 'This personal portfolio built with Next.js, Tailwind CSS, and Framer Motion.',
           tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
           url: 'https://github.com/praewfah/portfolio',
-        },
-        {
-          name: 'stock-management',
-          description: 'Inventory management tooling crafted with Laravel for internal operations.',
-          tech: ['Laravel', 'MySQL'],
-          url: 'https://github.com/praewfah/stock-management',
-        },
-        {
-          name: 'memory-game-card',
-          description: 'Classic memory card game implemented with PHP for practicing game mechanics.',
-          tech: ['PHP', 'JavaScript'],
-          url: 'https://github.com/praewfah/memory-game-card',
         },
       ],
     },
@@ -360,11 +386,129 @@ export const translations = {
           },
         ],
       },
+      study4: {
+        title: 'Fortune Wallpaper — AI Fortune Telling & Digital Wallpaper Platform',
+        overview:
+          'Personal project: designed and built a scalable FastAPI backend for an AI-driven fortune telling experience and monetized digital wallpapers, with production-oriented patterns for providers, payments, and digital delivery.',
+        blocks: [
+          {
+            title: 'Problem',
+            items: [
+              'Need a single backend that combines personalization (LLM), structured astrology data, and paid digital goods',
+              'Payment integrations must stay secure, consistent, and resilient to duplicate webhook deliveries',
+              'Digital products require time-limited, non-guessable access without exposing storage',
+              'Operators need configurable games and content without code deploys',
+              'Architecture should scale toward async AI-generated personalized wallpapers later',
+            ],
+          },
+          {
+            title: 'Challenges',
+            items: [
+              'Swapping or combining LLM and astrology providers without coupling business logic',
+              'Implementing PromptPay Dynamic QR across multiple PSPs (Omise, GB Prime Pay)',
+              'Webhook signature verification, idempotency, and reliable payment status synchronization',
+              'Fulfillment pipelines and signed download URLs for digital wallpaper delivery',
+              'Weighted randomization and admin APIs for fortune games while keeping transactions safe',
+            ],
+          },
+          {
+            title: 'My Approach',
+            items: [
+              'Built a modular FastAPI service layer with SQLAlchemy and PostgreSQL, containerized with Docker',
+              'Integrated LLM-based personalized fortune flows behind a pluggable provider abstraction',
+              'Abstracted Astrology API, OpenAI/LLM, and payment gateways so implementations stay isolated',
+              'Implemented PromptPay Dynamic QR flows and secure webhook handling with signature checks and idempotency',
+              'Delivered signed download URLs and fulfillment workflows for digital products',
+              'Designed async-ready fulfillment to support future AI-generated wallpapers',
+              'Shipped admin management APIs for fortune games, weighted randomization, and content management',
+              'Applied transaction safety, provider isolation, retry-safe workflows, and scalable API boundaries',
+            ],
+          },
+          {
+            title: 'Technologies Used',
+            items: [
+              'Python / FastAPI',
+              'SQLAlchemy',
+              'PostgreSQL',
+              'Docker',
+              'LLM / OpenAI (pluggable)',
+              'Astrology API',
+              'Omise & GB Prime Pay (PromptPay QR)',
+              'Async-oriented workflows',
+            ],
+          },
+          {
+            title: 'Results',
+            items: [
+              'Cohesive backend ready for production-style operations: payments, webhooks, and fulfillment',
+              'Clear extension points for new AI or payment providers without rewrites',
+              'Safer money paths via verification, idempotency, and synchronized payment state',
+              'Operators can tune games and content through admin APIs',
+              'Foundation in place for asynchronous, AI-driven personalized wallpaper generation',
+            ],
+          },
+        ],
+      },
     },
     architecture: {
       title: 'ARCHITECTURE & DESIGN',
       subtitle: 'Architecture patterns and system design choices',
       sections: [
+        {
+          title: 'AI & Integrations',
+          overview:
+            'Architecture and integration patterns for AI providers, payment gateways, and asynchronous processing — covering LLM abstractions, prompt design, multi-step workflows, Thai payment rails, and secure webhooks.',
+          blocks: [
+            {
+              title: 'OpenAI API / LLM Integration',
+              items: [
+                'Provider abstraction behind stable application-facing interfaces (swap or combine models without rewriting business logic)',
+                'Configurable models, timeouts, retries, and structured or JSON-oriented outputs where the product requires them',
+                'Operational concerns: observability, failure modes, and cost/latency trade-offs per call path',
+              ],
+            },
+            {
+              title: 'Prompt Engineering',
+              items: [
+                'Clear system and user prompts tuned per use case (tone, format, and safety boundaries)',
+                'Validation of model outputs against schemas or rules before persisting or showing to users',
+                'Traceable prompt and parameter choices for debugging and iteration',
+              ],
+            },
+            {
+              title: 'AI Workflow Integration',
+              items: [
+                'Multi-step flows: gather inputs, call providers, merge with domain data, then persist or respond',
+                'Async-friendly design for long-running generation without blocking API threads',
+                'Orchestration kept separate from raw HTTP/SDK calls to each provider',
+              ],
+            },
+            {
+              title: 'Payment Gateway Integration',
+              items: [
+                'Per-gateway adapters for charge creation, status checks, and reconciliation with internal orders',
+                'Single internal model for payment state mapped from heterogeneous PSP payloads',
+                'Environment separation (sandbox vs production) and secret handling',
+              ],
+            },
+            {
+              title: 'Omise / GB Prime Pay',
+              items: [
+                'PromptPay Dynamic QR and card/redirect flows where the PSP supports them',
+                'Running more than one PSP when products require redundancy or regional coverage',
+                'Aligning webhook timestamps and statuses with local transaction records',
+              ],
+            },
+            {
+              title: 'Webhook & Async Processing',
+              items: [
+                'Verify webhook authenticity (signatures, secrets) before mutating money or fulfillment state',
+                'Idempotency and deduplication so duplicate deliveries never double-fulfill',
+                'Background polling or workers to finish processing when the provider is eventually consistent',
+              ],
+            },
+          ],
+        },
         {
           title: 'Event-Driven Loyalty Architecture (Kafka-Based)',
           overview: 'The loyalty platform was redesigned to operate as a real-time, event-driven system using Kafka as the central messaging backbone. This architecture enables immediate processing of user activities across multiple gaming applications while maintaining reliability and scalability.',
@@ -657,7 +801,7 @@ export const translations = {
     about: {
       subtitle: 'Software Developer',
       subtitle2: 'Senior Back-End Engineer',
-      description1: 'นักพัฒนา Full Stack พร้อมประสบการณ์กว่า 10 ปีในการออกแบบและสร้างเว็บแอปพลิเคชันที่ปรับขยายได้ทั้งด้านหน้าบ้านและหลังบ้าน เชี่ยวชาญใน Python, React, Next.js, PHP และ MySQL/PostgreSQL/SQLite พร้อมประสบการณ์จริงในการใช้ Dockerized CI/CD, RESTful APIs และการบูรณาการข้ามระบบ',
+      description1: 'นักพัฒนา Full Stack พร้อมประสบการณ์กว่า 10 ปีในการออกแบบและสร้างเว็บแอปพลิเคชันที่ปรับขยายได้ทั้งด้านหน้าบ้านและหลังบ้าน มีจุดแข็งเฉพาะทางด้านสถาปัตยกรรม backend ด้วย Python และ Node.js การบูรณาการ AI/LLM ระบบการชำระเงิน และการเพิ่มประสิทธิภาพฐานข้อมูล นอกจากนี้ยังมีทักษะ React, Next.js, PHP และ MySQL/PostgreSQL/SQLite พร้อมประสบการณ์จริงในการใช้ Dockerized CI/CD, RESTful APIs และการบูรณาการข้ามระบบ',
       description2: 'ปัจจุบันนำการพัฒนาระบบเกม multi-tenant จัดการระบบกระเป๋าเงินที่ซับซ้อน การทำธุรกรรมพร้อมกัน และ API แบบเรียลไทม์สำหรับผู้ใช้ระดับนานาชาติที่มีปริมาณสูง มีความสนใจในการสร้างระบบที่มีประสิทธิภาพและบำรุงรักษาได้ รวมถึงการทำงานร่วมกับทีมที่มีความหลากหลายเพื่อส่งมอบโซลูชันดิจิทัลที่มีผลกระทบ',
     },
     experience: {
@@ -725,6 +869,7 @@ export const translations = {
       title: 'ทักษะทางเทคนิค',
       frontend: 'การพัฒนา Frontend',
       backend: 'การพัฒนา Backend',
+      ai: 'ระบบปัญญาประดิษฐ์ & ระบบอัจฉริยะ',
       api: 'API & Integration',
       devops: 'DevOps & Tools',
       specialization: 'ความเชี่ยวชาญพิเศษ',
@@ -753,6 +898,13 @@ export const translations = {
           'MySQL',
           'PostgreSQL',
           'Redis',
+        ],
+        ai: [
+          'เวิร์กโฟลว์ LLM และการแยก abstraction ของ provider',
+          'บูรณาการ AI/ML และ API ภายนอก',
+          'Webhook ที่ปลอดภัย idempotency และซิงก์สถานะการชำระเงิน',
+          'การส่งมอบดิจิทัลและ signed URL สำหรับสินทรัพย์',
+          'ออกแบบบริการแบบ async-ready (รองรับการสร้างจาก AI ในอนาคต)',
         ],
         api: [
           'RESTful APIs',
@@ -792,10 +944,46 @@ export const translations = {
       subtitle: 'ตัวอย่างโปรเจ็กต์และงานทดลอง',
       projects: [
         {
-          name: 'bot-line',
-          description: 'แชทบอท LINE “เลขมงคล” แจ้งเตือนผู้ดูแลเมื่อบอทตอบไม่ได้ภายในเวลาที่กำหนด',
-          tech: ['PHP', 'Heroku', 'LINE Messaging API'],
-          url: 'https://github.com/praewfah/bot-line',
+          name: 'Fortune Wallpaper',
+          description:
+            'โปรเจ็กต์ส่วนตัว: แพลตฟอร์มดูดวงด้วย AI และวอลเปเปอร์ดิจิทัล — backend FastAPI รองรับ provider LLM/โหราศาสตร์แบบถอดเปลี่ยนได้ PromptPay QR ผ่าน Omise / GB Prime Pay และ webhook ที่ปลอดภัยสำหรับการชำระเงินและการส่งมอบ',
+          tech: [
+            'FastAPI',
+            'SQLAlchemy',
+            'PostgreSQL',
+            'Docker',
+            'LLM APIs',
+            'Omise / GB Prime Pay',
+          ],
+          url: '',
+        },
+        {
+          name: 'rate-throttle-api',
+          description:
+            'ตัวอย่าง 3 บริการ FastAPI — caller สร้างโหลดแบบหลายเฟส throttle-service คิวและจำกัดอัตราผ่าน Redis echo-service จำกัดต่อหน้าต่างเวลา — Docker Compose, httpx ปรับเพดานและ logging ได้',
+          tech: ['FastAPI', 'Redis', 'Docker', 'Python'],
+          url: 'https://github.com/praewfah/rate-throttle-api',
+        },
+        {
+          name: 'python-user-management-api',
+          description:
+            'REST API จัดการผู้ใช้แบบ CRUD โครงสร้างเลเยอร์ (route, service, repository) มี validation soft delete และกู้คืนด้วยอีเมล ค้นหาและ pagination รองรับ pytest — FastAPI, SQLAlchemy, PostgreSQL, Alembic, Docker',
+          tech: ['FastAPI', 'SQLAlchemy', 'PostgreSQL', 'Alembic', 'Docker'],
+          url: 'https://github.com/praewfah/python-user-management-api',
+        },
+        {
+          name: 'react-user-management-ui',
+          description:
+            'หน้าเว็บ React + Vite เชื่อม user-management API: ตารางผู้ใช้ ค้นหาแบบ debounce สร้าง/แก้ไข/ลบ โฟลว์ restore เมื่ออีเมลซ้ำ pagination ตามสัญญา API และโหมด mock ได้',
+          tech: ['React', 'Vite', 'JavaScript'],
+          url: 'https://github.com/praewfah/react-user-management-ui',
+        },
+        {
+          name: 'ez-sandbox',
+          description:
+            'ตัวอย่างบูรณาการ B2C digital gift card: Express API รับออเดอร์ ซื้อจาก EZ Sandbox API รียูส transaction จาก pool (CANCELLED แต่ EZ complete) poll พื้นหลังพร้อม timeout คืน redeem code ผ่าน POST /orders และ GET /orders/:id',
+          tech: ['Node.js', 'Express', 'JavaScript'],
+          url: 'https://github.com/praewfah/ez-sandbox',
         },
         {
           name: 'card-match-api-node',
@@ -804,28 +992,10 @@ export const translations = {
           url: 'https://github.com/praewfah/card-match-api-node',
         },
         {
-          name: 'Map-Search-Application',
-          description: 'เว็บแอปหน้าเดียวที่ค้นหาเมืองและแสดงทวีตที่กล่าวถึงเมืองนั้นบนแผนที่',
-          tech: ['PHP', 'JavaScript', 'Twitter API'],
-          url: 'https://github.com/praewfah/Map-Search-Application',
-        },
-        {
           name: 'portfolio',
           description: 'เว็บไซต์พอร์ตโฟลิโอส่วนตัวนี้ ใช้ Next.js, Tailwind CSS และ Framer Motion',
           tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
           url: 'https://github.com/praewfah/portfolio',
-        },
-        {
-          name: 'stock-management',
-          description: 'ระบบจัดการสต็อกสินค้าด้วย Laravel สำหรับการใช้งานภายใน',
-          tech: ['Laravel', 'MySQL'],
-          url: 'https://github.com/praewfah/stock-management',
-        },
-        {
-          name: 'memory-game-card',
-          description: 'เกมจับคู่การ์ดแบบคลาสสิกที่พัฒนาด้วย PHP เพื่อฝึกงานด้านเกม',
-          tech: ['PHP', 'JavaScript'],
-          url: 'https://github.com/praewfah/memory-game-card',
         },
       ],
     },
@@ -1003,11 +1173,129 @@ export const translations = {
           },
         ],
       },
+      study4: {
+        title: 'Fortune Wallpaper — แพลตฟอร์มดูดวง AI & วอลเปเปอร์ดิจิทัล',
+        overview:
+          'โปรเจ็กต์ส่วนตัว: ออกแบบและพัฒนา backend FastAPI ที่ปรับขยายได้สำหรับประสบการณ์ดูดวงที่ขับเคลื่อนด้วย AI และการมอนีไตซ์วอลเปเปอร์ดิจิทัล โดยเน้นรูปแบบเชิง production สำหรับ provider การชำระเงิน และการส่งมอบสินค้าดิจิทัล',
+        blocks: [
+          {
+            title: 'ปัญหา',
+            items: [
+              'ต้องการ backend เดียวที่รวมการปรับแต่งแบบบุคคล (LLM) ข้อมูลโหราศาสตร์เชิงโครงสร้าง และสินค้าดิจิทัลแบบชำระเงิน',
+              'การเชื่อมเกตเวย์ชำระเงินต้องปลอดภัย สม่ำเสมอ และทนต่อการได้รับ webhook ซ้ำ',
+              'สินค้าดิจิทัลต้องเข้าถึงได้แบบจำกัดเวลาและเดายาก โดยไม่เปิดเผยที่เก็บไฟล์',
+              'ผู้ปฏิบัติการต้องปรับเกมและคอนเทนต์ได้โดยไม่ต้อง deploy โค้ดใหม่',
+              'สถาปัตยกรรมควรรองรับการสร้างวอลเปเปอร์ส่วนบุคคลด้วย AI แบบ async ในอนาคต',
+            ],
+          },
+          {
+            title: 'ความท้าทาย',
+            items: [
+              'สลับหรือผสมผู้ให้บริการ LLM และโหราศาสตร์โดยไม่ผูก business logic เข้ากับ implementation',
+              'นำ PromptPay Dynamic QR ไปใช้กับหลาย PSP (Omise, GB Prime Pay)',
+              'ตรวจสอบลายเซ็น webhook idempotency และการซิงก์สถานะการชำระเงินให้เชื่อถือได้',
+              'โฟลว์ fulfillment และ signed download URL สำหรับการส่งมอบวอลเปเปอร์',
+              'การสุ่มแบบถ่วงน้ำหนักและ admin APIs สำหรับเกมดูดวง ขณะรักษาความปลอดภัยของธุรกรรม',
+            ],
+          },
+          {
+            title: 'แนวทางของฉัน',
+            items: [
+              'สร้างเลเยอร์บริการ FastAPI แบบโมดูลาร์กับ SQLAlchemy และ PostgreSQL และ containerize ด้วย Docker',
+              'บูรณาการเวิร์กโฟลว์ดูดวงส่วนบุคคลด้วย LLM หลัง abstraction ของ provider ที่ถอดเปลี่ยนได้',
+              'แยก Astrology API OpenAI/LLM และเกตเวย์ชำระเงินออกเป็น implementation ที่แยกจากกัน',
+              'พัฒนาโฟลว์ PromptPay Dynamic QR และ webhook ที่ปลอดภัยพร้อมตรวจลายเซ็นและ idempotency',
+              'มอบ signed download URL และโฟลว์ fulfillment สำหรับสินค้าดิจิทัล',
+              'ออกแบบ fulfillment แบบ async-ready เพื่อรองรับวอลเปเปอร์ที่สร้างจาก AI ในอนาคต',
+              'ส่งมอบ admin APIs สำหรับเกมดูดวง การสุ่มแบบถ่วงน้ำหนัก และการจัดการคอนเทนต์',
+              'ใช้ transaction safety การแยก provider workflow ที่ retry-safe และขอบเขต API ที่ปรับขยายได้',
+            ],
+          },
+          {
+            title: 'เทคโนโลยีที่ใช้',
+            items: [
+              'Python / FastAPI',
+              'SQLAlchemy',
+              'PostgreSQL',
+              'Docker',
+              'LLM / OpenAI (pluggable)',
+              'Astrology API',
+              'Omise & GB Prime Pay (PromptPay QR)',
+              'Async-oriented workflows',
+            ],
+          },
+          {
+            title: 'ผลลัพธ์',
+            items: [
+              'backend ที่ใช้งานจริงได้ในแนว production: การชำระเงิน webhook และ fulfillment',
+              'จุดต่อขยายชัดเจนสำหรับ AI หรือผู้ให้บริการชำระเงินใหม่โดยไม่ต้องเขียนใหม่ทั้งระบบ',
+              'เส้นทางเงินที่ปลอดภัยขึ้นด้วยการตรวจสอบ idempotency และสถานะที่ซิงก์กัน',
+              'ผู้ปฏิบัติการปรับเกมและคอนเทนต์ผ่าน admin APIs ได้',
+              'รากฐานสำหรับการสร้างวอลเปเปอร์ส่วนบุคคลด้วย AI แบบ asynchronous',
+            ],
+          },
+        ],
+      },
     },
     architecture: {
       title: 'ARCHITECTURE & DESIGN',
       subtitle: 'แนวทางออกแบบสถาปัตยกรรมและการตัดสินใจเชิงระบบ',
       sections: [
+        {
+          title: 'AI & Integrations',
+          overview:
+            'รูปแบบสถาปัตยกรรมและการบูรณาการสำหรับ AI providers เกตเวย์ชำระเงิน และการประมวลผลแบบ asynchronous — ครอบคลุม abstraction ของ LLM การออกแบบ prompt workflow หลายขั้น ช่องทางชำระเงินไทย และ webhook ที่ปลอดภัย',
+          blocks: [
+            {
+              title: 'OpenAI API / LLM Integration',
+              items: [
+                'แยก abstraction ของ provider ไว้หลังอินเทอร์เฟซที่แอปเรียกใช้ (สลับหรือผสมโมเดลโดยไม่ต้องเขียน business logic ใหม่)',
+                'ตั้งค่าโมเดล timeout retry และรูปแบบผลลัพธ์ที่โครงสร้างชัด (เช่น JSON) เมื่อผลิตภัณฑ์ต้องการ',
+                'องค์ประกอบการรันระบบ: observability รูปแบบความล้มเหลว และการถ่วงดุลต้นทุน/เวลาแต่ละเส้นทางเรียก',
+              ],
+            },
+            {
+              title: 'Prompt Engineering',
+              items: [
+                'ออกแบบ system/user prompt ให้ตรง use case (น้ำเสียง รูปแบบ และขอบเขตความปลอดภัย)',
+                'ตรวจสอบผลลัพธ์จากโมเดลกับ schema หรือกฎก่อนบันทึกหรือแสดงให้ผู้ใช้',
+                'ออกแบบให้ติดตามการเปลี่ยน prompt/prompt parameter ได้เพื่อ debug และปรับปรุง',
+              ],
+            },
+            {
+              title: 'AI Workflow Integration',
+              items: [
+                'โฟลว์หลายขั้น: รวบรวมอินพุต เรียก provider ผสมข้อมูลโดเมน แล้วจึงบันทึกหรือตอบกลับ',
+                'ออกแบบให้เป็นมิตรกับ async สำหรับงาน generate ที่ใช้เวลานานโดยไม่ blocking thread ของ API',
+                'แยกเลเยอร์ orchestration ออกจากการเรียก HTTP/SDK ไปยังแต่ละ provider',
+              ],
+            },
+            {
+              title: 'Payment Gateway Integration',
+              items: [
+                'อะแดปเตอร์ต่อเกตเวย์สำหรับสร้างรายการชำระเงิน เช็กสถานะ และ reconcile กับออเดอร์ภายใน',
+                'โมเดลสถานะการชำระเงินภายในชุดเดียว แม้ payload จาก PSP จะต่างกัน',
+                'แยกสภาพแวดล้อม sandbox/production และจัดการ secret อย่างปลอดภัย',
+              ],
+            },
+            {
+              title: 'Omise / GB Prime Pay',
+              items: [
+                'PromptPay Dynamic QR และโฟลว์การ์ด/redirect เมื่อ PSP รองรับ',
+                'ใช้มากกว่าหนึ่ง PSP เมื่อต้องการสำรองหรือครอบคลุมภูมิภาค',
+                'จัดให้ timestamp และสถานะจาก webhook สอดคล้องกับบันทึกธุรกรรมภายใน',
+              ],
+            },
+            {
+              title: 'Webhook & Async Processing',
+              items: [
+                'ตรวจสอบความถูกต้องของ webhook (ลายเซ็น secret) ก่อนเปลี่ยนสถานะเงินหรือการส่งมอบ',
+                'ใช้ idempotency และ deduplication กันจัดส่งซ้ำจาก webhook ที่ซ้ำ',
+                'ใช้ polling หรือ worker พื้นหลังเมื่อฝั่ง provider เป็นแบบ eventually consistent',
+              ],
+            },
+          ],
+        },
         {
           title: 'Event-Driven Loyalty Architecture (Kafka-Based)',
           overview: 'ปรับระบบ loyalty ให้เป็น event-driven แบบเรียลไทม์ โดยใช้ Kafka เป็น messaging backbone หลัก ทำให้ประมวลผลกิจกรรมผู้ใช้ได้ทันทีในหลายแอปเกม พร้อมคงไว้ซึ่งความน่าเชื่อถือ ความสามารถในการ scale และความสอดคล้องของข้อมูล',

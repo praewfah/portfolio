@@ -71,6 +71,8 @@ export default function SkillsSection() {
 
             <Group title={t.skills.backend} items={t.skills.skills.backend} />
 
+            <Group title={t.skills.ai} items={t.skills.skills.ai} />
+
             <Group title={t.skills.api} items={t.skills.skills.api} />
 
             <Group title={t.skills.devops} items={t.skills.skills.devops} />

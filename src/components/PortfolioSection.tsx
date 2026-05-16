@@ -32,24 +32,26 @@ export default function PortfolioSection() {
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-blue-50/60 via-white/40 to-cyan-50/50 pointer-events-none" />
               <div className="relative">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-3">
                   <h3 className="text-lg font-semibold text-gray-900">{project.name}</h3>
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-sm font-medium text-blue-600 transition hover:text-blue-700"
-                  >
-                    GitHub
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="h-4 w-4"
+                  {project.url ? (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex shrink-0 items-center gap-1 text-sm font-medium text-blue-600 transition hover:text-blue-700"
                     >
-                      <path d="M11.3 3.3a1 1 0 00-1.4 1.4l3.3 3.3H6a1 1 0 000 2h7.2l-3.3 3.3a1 1 0 101.4 1.4l5-5a1 1 0 000-1.4l-5-5z" />
-                    </svg>
-                  </a>
+                      GitHub
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="h-4 w-4"
+                      >
+                        <path d="M11.3 3.3a1 1 0 00-1.4 1.4l3.3 3.3H6a1 1 0 000 2h7.2l-3.3 3.3a1 1 0 101.4 1.4l5-5a1 1 0 000-1.4l-5-5z" />
+                      </svg>
+                    </a>
+                  ) : null}
                 </div>
                 <p className="mt-3 text-sm text-gray-600 leading-relaxed">{project.description}</p>
                 <ul className="mt-4 flex flex-wrap gap-2">

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { translations } from "../lib/translations";
 
@@ -16,9 +16,10 @@ export default function CaseStudiesSection() {
   };
 
   const studies = [
-    { label: "Case Study 1", data: cs.study1 },
-    { label: "Case Study 2", data: cs.study2 },
-    { label: "Case Study 3", data: cs.study3 },
+    { label: "Case Study 1", data: cs.study4 },
+    { label: "Case Study 2", data: cs.study1 },
+    { label: "Case Study 3", data: cs.study2 },
+    { label: "Case Study 4", data: cs.study3 },
   ] as const;
 
   return (
