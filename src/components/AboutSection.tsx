@@ -9,7 +9,7 @@ export default function AboutSection() {
   const t = translations[language];
   return (
     <section id="about" className="relative">
-      <div className="relative h-[550px] md:h-[800px] w-full">
+      <div className="relative w-full min-h-[520px] md:h-[800px]">
         <Image 
           src="/p1.png" 
           alt="Praew" 
@@ -19,9 +19,9 @@ export default function AboutSection() {
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, (max-width: 1280px) 100vw, 100vw"
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent"></div>
-        <div className="container absolute inset-0 flex items-start pt-20 pb-10 md:items-center md:pt-0 md:pb-0">
-          <div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent" />
+        <div className="relative z-10 container pt-20 pb-12 md:absolute md:inset-0 md:flex md:items-center md:pt-0 md:pb-0">
+          <div className="max-w-2xl">
             <motion.h1 
               className="h1-hero animate-fadeup md:mt-3"
               initial={{ opacity: 0, y: 20 }}
@@ -31,7 +31,7 @@ export default function AboutSection() {
               AUMAPORN T.
             </motion.h1>
             <motion.p 
-              className="text-white text-lg mt-3 animate-fadeup" 
+              className="text-white text-base sm:text-lg mt-3 animate-fadeup" 
               style={{ animationDelay: '.2s' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ export default function AboutSection() {
               {t.about.subtitle}
             </motion.p>
             <motion.p 
-              className="text-white text-lg animate-fadeup" 
+              className="text-white text-base sm:text-lg animate-fadeup" 
               style={{ animationDelay: '.2s' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -49,7 +49,7 @@ export default function AboutSection() {
               {t.about.subtitle2}
             </motion.p>
             <motion.p 
-              className="text-white/80 italic text-sm mt-6 animate-fadeup" 
+              className="text-white/80 italic text-xs sm:text-sm mt-4 sm:mt-6 leading-relaxed animate-fadeup" 
               style={{ animationDelay: '.2s' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
