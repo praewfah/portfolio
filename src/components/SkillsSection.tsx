@@ -14,7 +14,7 @@ const fade = {
 function CardTitle({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-6">
-      <h3 className="text-xs md:text-sm tracking-[.35em] text-gray-400">{children}</h3>
+      <h3 className="card-title">{children}</h3>
       <div className="mt-2 h-0.5 w-20 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400" />
     </div>
   );

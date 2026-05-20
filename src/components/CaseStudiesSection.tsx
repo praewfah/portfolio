@@ -15,8 +15,15 @@ export default function CaseStudiesSection() {
     setOpenIndexes(openIndexes.includes(index) ? openIndexes.filter(i => i !== index) : [...openIndexes, index]);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const studies = [
-    { label: "Case Study 1", data: cs.study4 },
+    { label: "Case Study 1", data: cs.study4, sectionId: "fortune" },
     { label: "Case Study 2", data: cs.study1 },
     { label: "Case Study 3", data: cs.study2 },
     { label: "Case Study 4", data: cs.study3 },
@@ -27,7 +34,7 @@ export default function CaseStudiesSection() {
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-4">
           <div>
-            <h2 className="h-section text-gray-800 tracking-[0.25em]">{cs.title}</h2>
+            <h2 className="h-section text-gray-800">{cs.title}</h2>
             <p className="mt-4 max-w-xl text-sm text-gray-600">{cs.subtitle}</p>
           </div>
         </div>
@@ -42,26 +49,48 @@ export default function CaseStudiesSection() {
               transition={{ duration: 0.35, delay: i * 0.03 }}
               className="rounded-2xl border border-gray-200/70 bg-white/80 shadow-sm overflow-hidden"
             >
-              <button
-                type="button"
-                className="w-full px-6 md:px-8 py-5 flex items-center justify-between gap-4 text-left hover:bg-white/70 transition"
-                onClick={() => toggleOpenIndex(i)}
-                aria-expanded={openIndexes.includes(i)}
-                aria-controls={`casestudies-panel-${i}`}
-              >
-                <span className="text-xl font-semibold text-gray-900">
-                  {s.label} – {s.data.title}
-                </span>
-                <span
-                  className={`shrink-0 inline-flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 transition-transform ${
-                    openIndexes.includes(i) ? "rotate-180" : "rotate-0"
-                  }`}
+              <div className="flex items-center justify-between gap-4 px-6 md:px-8 py-5">
+                <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2 md:gap-3">
+                  <button
+                    type="button"
+                    className="text-left text-xl font-semibold text-gray-900 transition hover:text-gray-700"
+                    onClick={() => toggleOpenIndex(i)}
+                    aria-expanded={openIndexes.includes(i)}
+                    aria-controls={`casestudies-panel-${i}`}
+                  >
+                    {s.label} – {s.data.title}
+                  </button>
+                  {"sectionId" in s && s.sectionId && (
+                    <button
+                      type="button"
+                      onClick={() => scrollToSection(s.sectionId)}
+                      className="inline-flex shrink-0 items-center gap-1 rounded-md border border-amber-300/80 bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-800 transition hover:bg-amber-100"
+                    >
+                      {language === "th" ? "ไปที่ Fortune" : "Fortune demo"}
+                      <svg className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M11.3 3.3a1 1 0 00-1.4 1.4l3.3 3.3H6a1 1 0 000 2h7.2l-3.3 3.3a1 1 0 101.4 1.4l5-5a1 1 0 000-1.4l-5-5z" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+                <button
+                  type="button"
+                  className="shrink-0 inline-flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 transition hover:bg-gray-50"
+                  onClick={() => toggleOpenIndex(i)}
+                  aria-expanded={openIndexes.includes(i)}
+                  aria-label={openIndexes.includes(i) ? "Collapse" : "Expand"}
                 >
-                  <svg className="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 8l4 4 4-4" />
-                  </svg>
-                </span>
-              </button>
+                  <span
+                    className={`inline-flex transition-transform ${
+                      openIndexes.includes(i) ? "rotate-180" : "rotate-0"
+                    }`}
+                  >
+                    <svg className="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 8l4 4 4-4" />
+                    </svg>
+                  </span>
+                </button>
+              </div>
 
               {openIndexes.includes(i) && (
                 <div id={`casestudies-panel-${i}`} className="px-6 md:px-8 pb-6">

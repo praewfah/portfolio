@@ -280,10 +280,10 @@ export default function CardGameSection() {
     return (
         <section id="cardgame" className="pb-24 pt-20 bg-gradient-to-b from-sky-50/60 via-white to-white">
             <div className="container">
-                <div className="mb-10 sm:block md:hidden">
+                <div className="mb-10">
                     <div className="mb-6">
-                        <h2 className="h-section text-gray-800 tracking-[0.25em]">{t.cardgame.title}</h2>
-                        {/*<p className="mt-4 max-w-xl text-sm text-gray-600">{t.cardgame.subtitle}</p>*/}
+                        <h2 className="h-section text-gray-800">{t.cardgame.title}</h2>
+                        <p className="mt-4 max-w-xl text-sm text-gray-600">{t.cardgame.subtitle}</p>
                     </div>
                 </div> 
 

@@ -5,12 +5,13 @@ import EducationSection from '../components/EducationSection';
 import PortfolioSection from '../components/PortfolioSection';
 import CaseStudiesSection from '../components/CaseStudiesSection';
 import ArchitectureSection from '../components/ArchitectureSection';
+import FortuneSection from '../components/FortuneSection';
 import CardGameSection from '../components/CardGameSection';
 import ContactSection from '../components/ContactSection';
 
 export default function LobbyPage() {
   return (
-    <div className="pt-10">
+    <div>
       <AboutSection />
       <ExperienceSection />
       <SkillsSection />
@@ -18,6 +19,7 @@ export default function LobbyPage() {
       <PortfolioSection />
       <CaseStudiesSection />
       <ArchitectureSection />
+      <FortuneSection />
       <CardGameSection />
       <ContactSection />
     </div>

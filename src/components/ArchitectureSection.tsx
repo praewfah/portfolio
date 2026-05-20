@@ -33,7 +33,7 @@ export default function ArchitectureSection() {
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-4">
           <div>
-            <h2 className="h-section text-gray-800 tracking-[0.25em]">{arch.title}</h2>
+            <h2 className="h-section text-gray-800">{arch.title}</h2>
             <p className="mt-4 max-w-xl text-sm text-gray-600">{arch.subtitle}</p>
           </div>
         </div>

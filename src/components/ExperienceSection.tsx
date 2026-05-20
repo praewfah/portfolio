@@ -17,7 +17,7 @@ export default function ExperienceSection() {
   return (
     <section id="experience" className="pb-24 pt-20">
       <div className="container">
-        <h2 className="h-section mb-16 tracking-[0.25em] text-gray-800">
+        <h2 className="h-section mb-16 text-gray-800">
           {t.experience.title}
         </h2>
 
