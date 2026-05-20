@@ -20,10 +20,10 @@ export default function AboutSection() {
           quality={90}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent"></div>
-        <div className="container absolute inset-0 flex items-center">
+        <div className="container absolute inset-0 flex items-start pt-20 pb-10 md:items-center md:pt-0 md:pb-0">
           <div>
             <motion.h1 
-              className="h1-hero animate-fadeup mt-3"
+              className="h1-hero animate-fadeup md:mt-3"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
