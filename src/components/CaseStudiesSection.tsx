@@ -15,15 +15,10 @@ export default function CaseStudiesSection() {
     setOpenIndexes(openIndexes.includes(index) ? openIndexes.filter(i => i !== index) : [...openIndexes, index]);
   };
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const FORTUNE_SITE = "https://fortunewallpaper.com";
 
   const studies = [
-    { label: "Case Study 1", data: cs.study4, sectionId: "fortune" },
+    { label: "Case Study 1", data: cs.study4, externalUrl: FORTUNE_SITE },
     { label: "Case Study 2", data: cs.study1 },
     { label: "Case Study 3", data: cs.study2 },
     { label: "Case Study 4", data: cs.study3 },
@@ -60,17 +55,18 @@ export default function CaseStudiesSection() {
                   >
                     {s.label} – {s.data.title}
                   </button>
-                  {"sectionId" in s && s.sectionId && (
-                    <button
-                      type="button"
-                      onClick={() => scrollToSection(s.sectionId)}
+                  {"externalUrl" in s && s.externalUrl && (
+                    <a
+                      href={s.externalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex shrink-0 items-center gap-1 rounded-md border border-amber-300/80 bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-800 transition hover:bg-amber-100"
                     >
-                      {language === "th" ? "ไปที่ Fortune" : "Fortune demo"}
-                      <svg className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                      {language === "th" ? "ไปที่เว็บ" : "Visit site"}
+                      <svg className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                         <path d="M11.3 3.3a1 1 0 00-1.4 1.4l3.3 3.3H6a1 1 0 000 2h7.2l-3.3 3.3a1 1 0 101.4 1.4l5-5a1 1 0 000-1.4l-5-5z" />
                       </svg>
-                    </button>
+                    </a>
                   )}
                 </div>
                 <button

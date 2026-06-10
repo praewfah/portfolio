@@ -3,6 +3,9 @@ const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)', 'Prompt', 'Noto Sans Thai', 'sans-serif'],
+      },
       colors: { ink: "#1A1A1A", muted: "#6B7280", light: "#E5E7EB" },
       keyframes: { 
         fadeup: { 

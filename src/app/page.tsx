@@ -7,7 +7,6 @@ import CaseStudiesSection from '../components/CaseStudiesSection';
 import ArchitectureSection from '../components/ArchitectureSection';
 import FortuneSection from '../components/FortuneSection';
 import CardGameSection from '../components/CardGameSection';
-import ContactSection from '../components/ContactSection';
 
 export default function LobbyPage() {
   return (
@@ -21,7 +20,6 @@ export default function LobbyPage() {
       <ArchitectureSection />
       <FortuneSection />
       <CardGameSection />
-      <ContactSection />
     </div>
   );
 }

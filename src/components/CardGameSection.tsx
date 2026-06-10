@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState, useCallback } from "react";
+import { useEffect, useMemo, useState, useCallback, useRef } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { translations } from "../lib/translations";
 
@@ -17,6 +17,22 @@ type Card = {
     isMatched: boolean;
 };
 
+type CardTheme = {
+    emoji: string;
+    theme: string;
+};
+
+const CARD_THEMES: CardTheme[] = [
+    { emoji: '🚀', theme: 'rocket' },
+    { emoji: '💎', theme: 'diamond' },
+    { emoji: '⭐', theme: 'star' },
+    { emoji: '❤️', theme: 'heart' },
+    { emoji: '⚡', theme: 'bolt' },
+    { emoji: '🔥', theme: 'fire' },
+    { emoji: '🌙', theme: 'moon' },
+    { emoji: '☀️', theme: 'sun' },
+];
+
 const API_BASE = "https://api.aumaporn.com";
 const DEVICE_ID_KEY = "cardmatch_device_id";
 
@@ -24,8 +40,18 @@ function generateDeviceId(): string {
     if (typeof window !== "undefined" && "crypto" in window && "randomUUID" in window.crypto) {
         return window.crypto.randomUUID();
     }
-    // Fallback: simple random string
     return `dev_${Math.random().toString(36).slice(2)}_${Date.now().toString(36)}`;
+}
+
+function getCardTheme(value: number | null): CardTheme {
+    if (value === null || value < 0) return CARD_THEMES[0];
+    return CARD_THEMES[value % CARD_THEMES.length];
+}
+
+function formatElapsedTime(seconds: number): string {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 }
 
 export default function CardGameSection() {
@@ -49,8 +75,8 @@ export default function CardGameSection() {
         { device_id: string; score: number; created_at: string }[]
     >([]);
     const [hasAutoSubmitted, setHasAutoSubmitted] = useState(false);
+    const revealingRef = useRef(false);
 
-    // initialize device id once
     useEffect(() => {
         if (typeof window === "undefined") return;
         let stored = window.localStorage.getItem(DEVICE_ID_KEY);
@@ -61,7 +87,6 @@ export default function CardGameSection() {
         setDeviceId(stored);
     }, []);
 
-    // timer
     useEffect(() => {
         if (!timerRunning || startTime === null) return;
         const id = window.setInterval(() => {
@@ -157,12 +182,12 @@ export default function CardGameSection() {
     };
 
     const revealCard = async (cardIndex: number) => {
-        if (!game || isLoading || submittingScore) return;
+        if (!game || revealingRef.current || submittingScore) return;
         const card = cards[cardIndex];
         if (!card || card.isMatched || card.isRevealed) return;
         if (selectedIndexes.length === 2) return;
 
-        setIsLoading(true);
+        revealingRef.current = true;
         setError(null);
 
         try {
@@ -222,7 +247,7 @@ export default function CardGameSection() {
         } catch (err: any) {
             setError(err.message || "Unexpected error");
         } finally {
-            setIsLoading(false);
+            revealingRef.current = false;
         }
     };
 
@@ -253,7 +278,6 @@ export default function CardGameSection() {
             setLastScore(score);
             fetchLeaderboard();
 
-            // Show congratulations alert
             if (isAutoSubmit) {
                 alert(`${t.cardgame.congratulations}\n${t.cardgame.scoreSubmitted}\n${t.cardgame.yourScore} ${score}`);
             }
@@ -264,7 +288,6 @@ export default function CardGameSection() {
         }
     }, [deviceId, game, score, submittingScore, t.cardgame]);
 
-    // Auto submit when all cards are matched
     useEffect(() => {
         if (allMatched && !hasAutoSubmitted && !submittingScore && deviceId && game) {
             setHasAutoSubmitted(true);
@@ -272,170 +295,140 @@ export default function CardGameSection() {
         }
     }, [allMatched, hasAutoSubmitted, submittingScore, deviceId, game, submitScoreInternal]);
 
-    //   const submitScore = () => {
-    //     submitScoreInternal(false);
-    //   };
-
-
     return (
-        <section id="cardgame" className="pb-24 pt-20 bg-gradient-to-b from-sky-50/60 via-white to-white">
+        <section id="cardgame" className="cardgame-section pb-24 pt-20">
             <div className="container">
-                <div className="mb-10">
-                    <div className="mb-6">
-                        <h2 className="h-section text-gray-800">{t.cardgame.title}</h2>
-                        <p className="mt-4 max-w-xl text-sm text-gray-600">{t.cardgame.subtitle}</p>
-                    </div>
-                </div> 
+                <div className="mb-10 text-center text-white">
+                    <h2 className="h-section text-white">{t.cardgame.title}</h2>
+                    {/* <p className="mx-auto mt-4 max-w-xl text-sm text-white/80">{t.cardgame.subtitle}</p> */}
+                </div>
 
-                <div className="flex flex-col md:flex-row gap-8">
-                    <div className="md:w-2/3">
-                        <div className="flex items-center justify-between mb-4">
-                            <div className="flex gap-4 text-sm text-gray-700">
-                                <span>
-                                    {t.cardgame.time}:{" "}
-                                    <span className="font-semibold text-blue-700">{elapsedSeconds}s</span>
-                                </span>
-                                <span>
-                                    {t.cardgame.moves}:{" "}
-                                    <span className="font-semibold text-blue-700">{moves}</span>
-                                </span>
-                                <span>
-                                    {t.cardgame.matched}:{" "}
-                                    <span className="font-semibold text-blue-700">
-                                        {matchedPairs}/{totalPairs}
-                                    </span>
-                                </span>
+                <div className="mx-auto w-full max-w-[480px] px-1">
+                    {game && (
+                        <div className="mb-4 flex items-center justify-between px-1">
+                            <div className="cardgame-stat">
+                                <span className="cardgame-stat-icon" aria-hidden>⭐</span>
+                                <span className="cardgame-stat-value">{score}</span>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <span className="text-sm text-gray-700">
-                                    {t.cardgame.score}: <span className="font-semibold text-emerald-700">{score}</span>
-                                </span>
+                            <div className="cardgame-stat">
+                                <span className="cardgame-stat-icon" aria-hidden>▶️</span>
+                                <span className="cardgame-stat-value">{moves}</span>
+                            </div>
+                            <div className="cardgame-stat">
+                                <span className="cardgame-stat-icon" aria-hidden>🔥</span>
+                                <span className="cardgame-stat-value">{formatElapsedTime(elapsedSeconds)}</span>
+                            </div>
+                        </div>
+                    )}
+
+                    {error && (
+                        <div className="mb-4 rounded-xl border border-red-300/40 bg-red-500/20 px-3 py-2 text-xs text-red-100">
+                            {error}
+                        </div>
+                    )}
+
+                    {!game ? (
+                        <div className="cardgame-panel flex flex-col items-center justify-center px-6 py-14 text-center">
+                            <p className="mb-6 text-sm text-white/85">{t.cardgame.emptyState}</p>
+                            <button
+                                type="button"
+                                onClick={startNewGame}
+                                disabled={!deviceId || isLoading}
+                                className="rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-[#7b5ea7] shadow-md transition hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-60"
+                            >
+                                {isLoading ? t.cardgame.starting : t.cardgame.startNewGame}
+                            </button>
+                        </div>
+                    ) : (
+                        <>
+                            <div className="grid grid-cols-4 gap-2.5 sm:gap-[10px]">
+                                {cards.map((card) => {
+                                    const isDisabled =
+                                        submittingScore ||
+                                        card.isMatched ||
+                                        (selectedIndexes.length === 2 && !card.isRevealed);
+                                    const showFace = card.isRevealed || card.isMatched;
+                                    const { emoji, theme } = getCardTheme(card.value);
+
+                                    return (
+                                        <button
+                                            key={card.index}
+                                            type="button"
+                                            disabled={isDisabled}
+                                            onClick={() => revealCard(card.index)}
+                                            data-theme={theme}
+                                            className={`cardgame-card
+                          ${showFace ? `cardgame-card--flipped cardgame-card--${theme}` : ''}
+                          ${card.isMatched ? 'cardgame-card--matched' : ''}`}
+                                            aria-label={showFace ? emoji : '?'}
+                                        >
+                                            <span className="cardgame-card-face" aria-hidden>{emoji}</span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+
+                            <div className="mt-5 flex justify-center">
                                 <button
                                     type="button"
                                     onClick={startNewGame}
                                     disabled={!deviceId || isLoading}
-                                    className="ml-2 rounded-full bg-blue-600 px-4 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed"
+                                    className="rounded-full bg-white/20 px-5 py-2 text-xs font-semibold text-white backdrop-blur-sm transition hover:bg-white/30 disabled:cursor-not-allowed disabled:opacity-60"
                                 >
                                     {isLoading ? t.cardgame.starting : t.cardgame.startNewGame}
                                 </button>
                             </div>
-                        </div>
+                        </>
+                    )}
+                </div>
 
-                        <div className="rounded-2xl border border-gray-200 bg-white/80 p-4 shadow-sm">
-                            {error && (
-                                <div className="mb-4 rounded-md border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700">
-                                    {error}
-                                </div>
-                            )}
-
-                            {!game ? (
-                                <div className="flex flex-col items-center justify-center py-12 text-center text-sm text-gray-600">
-                                    <p>{t.cardgame.emptyState}</p>
-                                </div>
-                            ) : (
-                                <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 gap-3 sm:gap-4">
-                                    {cards.map((card) => {
-                                        const isDisabled =
-                                            isLoading ||
-                                            submittingScore ||
-                                            card.isMatched ||
-                                            (selectedIndexes.length === 2 && !card.isRevealed);
-                                        const showValue = card.isRevealed || card.isMatched;
-                                        return (
-                                            <button
-                                                key={card.index}
-                                                type="button"
-                                                disabled={isDisabled}
-                                                onClick={() => revealCard(card.index)}
-                                                className={`relative aspect-square rounded-xl border text-sm font-semibold transition transform
-                          ${card.isMatched
-                                                        ? "bg-emerald-500/90 border-emerald-500 text-white scale-95"
-                                                        : showValue
-                                                            ? "bg-blue-500/90 border-blue-500 text-white"
-                                                            : "bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100"
-                                                    }
-                          disabled:cursor-not-allowed`}
-                                            >
-                                                <span className="absolute inset-0 flex items-center justify-center">
-                                                    {showValue ? card.value : "?"}
-                                                </span>
-                                            </button>
-                                        );
-                                    })}
-                                </div>
-                            )}
-                        </div>
+                <div className="cardgame-panel mx-auto mt-10 w-full max-w-[480px] space-y-4 p-5 text-white/90">
+                    <div className="text-xs text-white/75">
+                        <h3 className="mb-2 text-base font-semibold text-white">
+                            {t.cardgame.howToPlay}
+                        </h3>
+                        <ul className="list-disc space-y-1 pl-5">
+                            {t.cardgame.instructions.map((instruction, idx) => (
+                                <li key={idx}>{instruction}</li>
+                            ))}
+                        </ul>
                     </div>
 
-                    <div className="md:w-1/3">
-                        <div className="rounded-2xl border border-gray-200 bg-white/80 p-4 text-gray-700 shadow-sm space-y-3">
-                            <div className="text-xs text-gray-500">
-                                <h3 className="text-base font-semibold text-gray-900">
-                                    {t.cardgame.howToPlay}
-                                </h3>
-                                <ul className="list-disc pl-5 space-y-1">
-                                    {t.cardgame.instructions.map((instruction, idx) => (
-                                        <li key={idx}>{instruction}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="divider mb-10" />
-                            <div className="text-xs text-gray-500">
+                    {(lastScore !== null || leaderboard.length > 0) && (
+                        <>
+                            <div className="h-px bg-white/20" />
+                            <div className="text-xs text-white/75">
                                 {lastScore !== null && (
-                                    <div className="mb-2">
-                                        {t.cardgame.lastScore}{" "}
-                                        <span className="font-semibold text-blue-700">{lastScore}</span>
+                                    <div className="mb-3">
+                                        {t.cardgame.lastScore}{' '}
+                                        <span className="font-semibold text-white">{lastScore}</span>
                                     </div>
                                 )}
                                 {leaderboard.length > 0 && (
                                     <div>
-                                        <span className="font-semibold text-gray-700 mb-2">
+                                        <span className="mb-2 block font-semibold text-white">
                                             {t.cardgame.leaderboard}
                                         </span>
-                                        <ol className="mt-1">
+                                        <ol className="space-y-1">
                                             {leaderboard.map((item, idx) => (
                                                 <li key={`${item.device_id}-${idx}`} className="flex justify-between gap-3">
-                                                    <span className="text-gray-600">
-                                                        #{idx + 1}{" "}
+                                                    <span className="text-white/70">
+                                                        #{idx + 1}{' '}
                                                         <span className="font-mono text-[12px]">
                                                             {item.device_id.slice(0, 6)}…
                                                         </span>
                                                     </span>
-                                                    <span className="font-semibold text-blue-700">{item.score}</span>
+                                                    <span className="font-semibold text-white">{item.score}</span>
                                                 </li>
                                             ))}
                                         </ol>
                                     </div>
                                 )}
                             </div>
-                            
-                            {/* {allMatched && (
-                                <div className="mt-3 rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs text-emerald-800">
-                                <div className="font-semibold mb-1">
-                                    {t.cardgame.allMatched}
-                                </div>
-                                <div className="flex items-center justify-between gap-2">
-                                    <span>
-                                    {t.cardgame.yourScore}{" "}
-                                    <span className="font-semibold">{score}</span>
-                                    </span>
-                                    <button
-                                    type="button"
-                                    onClick={submitScore}
-                                    disabled={submittingScore}
-                                    className="rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold text-white shadow-sm transition hover:bg-emerald-700 disabled:opacity-60 disabled:cursor-not-allowed"
-                                    >
-                                    {submittingScore ? t.cardgame.submitting : t.cardgame.submitScore}
-                                    </button>
-                                </div>
-                                </div>
-                            )} */}
-                        </div>
-                    </div>
+                        </>
+                    )}
                 </div>
             </div>
         </section>
     );
 }
-
-

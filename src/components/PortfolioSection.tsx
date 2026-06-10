@@ -34,24 +34,46 @@ export default function PortfolioSection() {
               <div className="relative">
                 <div className="flex items-center justify-between gap-3">
                   <h3 className="text-lg font-semibold text-gray-900">{project.name}</h3>
-                  {project.url ? (
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex shrink-0 items-center gap-1 text-sm font-medium text-blue-600 transition hover:text-blue-700"
-                    >
-                      GitHub
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        className="h-4 w-4"
+                  <div className="flex shrink-0 items-center gap-3">
+                    {"playSection" in project && project.playSection ? (
+                      <a
+                        href={`#${project.playSection}`}
+                        className="inline-flex items-center gap-1 text-sm font-medium text-emerald-600 transition hover:text-emerald-700"
                       >
-                        <path d="M11.3 3.3a1 1 0 00-1.4 1.4l3.3 3.3H6a1 1 0 000 2h7.2l-3.3 3.3a1 1 0 101.4 1.4l5-5a1 1 0 000-1.4l-5-5z" />
-                      </svg>
-                    </a>
-                  ) : null}
+                        {"playLabel" in project && project.playLabel ? project.playLabel : "Play"}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          className="h-4 w-4"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 3a.75.75 0 01.75.75v10.638l3.96-4.158a.75.75 0 111.08 1.04l-5.25 5.5a.75.75 0 01-1.08 0l-5.25-5.5a.75.75 0 111.08-1.04l3.96 4.158V3.75A.75.75 0 0110 3z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </a>
+                    ) : null}
+                    {project.url ? (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm font-medium text-blue-600 transition hover:text-blue-700"
+                      >
+                        {"linkLabel" in project && project.linkLabel ? project.linkLabel : "GitHub"}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          className="h-4 w-4"
+                        >
+                          <path d="M11.3 3.3a1 1 0 00-1.4 1.4l3.3 3.3H6a1 1 0 000 2h7.2l-3.3 3.3a1 1 0 101.4 1.4l5-5a1 1 0 000-1.4l-5-5z" />
+                        </svg>
+                      </a>
+                    ) : null}
+                  </div>
                 </div>
                 <p className="mt-3 text-sm text-gray-600 leading-relaxed">{project.description}</p>
                 <ul className="mt-4 flex flex-wrap gap-2">
